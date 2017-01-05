@@ -27,7 +27,7 @@ namespace Gvr.Internal {
     /// platform. This method never returns null. In the worst case, it might return a dummy
     /// provider if the platform is not supported.
     static internal IControllerProvider CreateControllerProvider(GvrController owner) {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_ANDROID || UNITY_IOS // <-- Add UNITY_ANDROID and UNITY_IOS
       // SystemInfo.graphicsDeviceID is zero for Unity 5.3.3.
       if (SystemInfo.graphicsDeviceID == 0) {
         // Running headless.  Use the dummy provider.
@@ -36,9 +36,9 @@ namespace Gvr.Internal {
       }
       // Use the Controller Emulator.
       return new EmulatorControllerProvider(owner.emulatorConnectionMode);
-#elif UNITY_ANDROID
+//#elif UNITY_ANDROID
       // Use the GVR C API.
-      return new AndroidNativeControllerProvider();
+      //return new AndroidNativeControllerProvider();
 #else
       // Platform not supported.
       Debug.LogWarning("No controller support on this platform.");

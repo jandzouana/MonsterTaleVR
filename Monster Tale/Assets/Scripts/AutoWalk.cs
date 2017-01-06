@@ -26,11 +26,10 @@ public class AutoWalk : MonoBehaviour {
 			cc.SimpleMove(forward * speed);
 
 		}
-
-		if (Input.GetButtonDown("Fire1") && canMove && moveForward == false) {
+        if ((Input.GetButtonDown("Fire1") || GvrController.AppButtonDown) && canMove && moveForward == false){
 			moveForward = true;
-		} 
-		else if (Input.GetButtonDown("Fire1")&&moveForward == true){
+		}
+        else if ((Input.GetButtonDown("Fire1") || GvrController.AppButtonDown) && moveForward == true){
 			moveForward = false;
 		}
 

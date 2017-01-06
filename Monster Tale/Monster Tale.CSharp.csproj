@@ -156,6 +156,7 @@
     <Compile Include="Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
     <Compile Include="Assets\Scripts\AutoWalk.cs" />
     <Compile Include="Assets\Scripts\ClickWalk.cs" />
+    <Compile Include="Assets\Scripts\ControllerWalk.cs" />
     <Compile Include="Assets\Scripts\door_button_open.cs" />
     <Compile Include="Assets\Scripts\door_button_reject.cs" />
     <Compile Include="Assets\Scripts\door_vicinity.cs" />

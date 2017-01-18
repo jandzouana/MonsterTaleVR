@@ -37,9 +37,10 @@ public class GvrLaserPointer : GvrBasePointer {
   private Vector3 pointerIntersection;
   private Ray pointerIntersectionRay;
 
-  /// Color of the laser pointer including alpha transparency
-  public Color laserColor = new Color(1.0f, 1.0f, 1.0f, 0.25f);
-
+    /// Color of the laser pointer including alpha transparency
+   //public Color laserColor = new Color(1.0f, 1.0f, 1.0f, 0.25f); //original
+   public Color laserColor2 = new Color32(255, 255, 255, 128); //not original
+   //public Color laserColor2;
   /// Maximum distance of the pointer (meters).
   [Range(0.0f, 10.0f)]
   public float maxLaserDistance = 0.75f;
@@ -81,7 +82,7 @@ public class GvrLaserPointer : GvrBasePointer {
 
     // Adjust transparency
     float alpha = GvrArmModel.Instance.alphaValue;
-    lineRenderer.SetColors(Color.Lerp(Color.clear, laserColor, alpha), Color.clear);
+    lineRenderer.SetColors(Color.Lerp(Color.clear, laserColor2, alpha), Color.clear);
   }
 
   public override void OnInputModuleEnabled() {

@@ -33,13 +33,11 @@ public class spaceship_open : MonoBehaviour {
          		{
              		spaceshipTop.transform.eulerAngles = to;
              		rotating = false;
-					Debug.Log ("I should be done now");
          		}
      		}
 		}
 
 		else if (enteredValueScript.entered == false) {
-			Debug.Log ("I'm doing this now");
 			isOpen = false;
 			rotating = true;
 			if (rotating)

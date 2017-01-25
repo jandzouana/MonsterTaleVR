@@ -10,6 +10,9 @@ public class AutoWalk : MonoBehaviour {
 	private CharacterController cc;
     public bool canMove;
 
+	public void SetMove(bool input){
+		canMove = !input;
+	}
 	// Use this for initialization
 	void Start () {
 		cc = GetComponent<CharacterController> ();

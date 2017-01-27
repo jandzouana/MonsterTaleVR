@@ -157,6 +157,7 @@
     <Compile Include="Assets\Scripts\AutoWalk.cs" />
     <Compile Include="Assets\Scripts\ClickWalk.cs" />
     <Compile Include="Assets\Scripts\ControllerWalk.cs" />
+    <Compile Include="Assets\Scripts\FlyingMechanism.cs" />
     <Compile Include="Assets\Scripts\door_button_open.cs" />
     <Compile Include="Assets\Scripts\door_button_reject.cs" />
     <Compile Include="Assets\Scripts\door_vicinity.cs" />
@@ -164,7 +165,10 @@
     <Compile Include="Assets\Scripts\gate_vicinity.cs" />
     <Compile Include="Assets\Scripts\remove_text_panel.cs" />
     <Compile Include="Assets\Scripts\set_camera_init.cs" />
-    <Compile Include="Assets\Scripts\starfield.cs" />
+    <Compile Include="Assets\Scripts\sitInSpaceship.cs" />
+    <Compile Include="Assets\Scripts\spaceship_open.cs" />
+    <Compile Include="Assets\Scripts\spaceship_vicinity.cs" />
+    <Compile Include="Assets\laserColorChange.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\GoogleVR\Demos\Environment\DemoEnvUnlitGrayscale.shader" />

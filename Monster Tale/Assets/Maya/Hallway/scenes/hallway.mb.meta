@@ -3986,6 +3986,12 @@ ModelImporter:
     107956: big_rock3
     107958: big_rock4
     107960: big_rock5
+    107962: grass2
+    107964: pCube133
+    107966: pPlane4
+    107968: pPyramid2
+    107970: rough
+    107972: rough1
     400000: all_beams
     400002: all_ground
     400004: antenna
@@ -7967,6 +7973,12 @@ ModelImporter:
     407956: big_rock3
     407958: big_rock4
     407960: big_rock5
+    407962: grass2
+    407964: pCube133
+    407966: pPlane4
+    407968: pPyramid2
+    407970: rough
+    407972: rough1
     2300000: beam1
     2300002: beam1 1
     2300004: beam2
@@ -10881,6 +10893,10 @@ ModelImporter:
     2305822: big_rock3
     2305824: big_rock4
     2305826: big_rock5
+    2305828: grass2
+    2305830: pPlane4
+    2305832: pPyramid2
+    2305834: rough1
     3300000: beam1
     3300002: beam1 1
     3300004: beam2
@@ -13795,6 +13811,10 @@ ModelImporter:
     3305822: big_rock3
     3305824: big_rock4
     3305826: big_rock5
+    3305828: grass2
+    3305830: pPlane4
+    3305832: pPyramid2
+    3305834: rough1
     4300000: exterior
     4300002: pCube9
     4300004: pCube8
@@ -16708,6 +16728,10 @@ ModelImporter:
     4305820: big_rock3
     4305822: big_rock4
     4305824: big_rock5
+    4305826: grass2
+    4305828: pPyramid2
+    4305830: pPlane4
+    4305832: rough1
     6400000: beam1
     6400002: beam1 1
     6400004: beam2
@@ -19602,6 +19626,10 @@ ModelImporter:
     6405782: window4 1
     6405784: window5
     6405786: window6
+    6405788: grass2
+    6405790: pPlane4
+    6405792: pPyramid2
+    6405794: rough1
     9500000: //RootNode
   materials:
     importMaterials: 1

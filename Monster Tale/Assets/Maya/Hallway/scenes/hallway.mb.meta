@@ -3992,6 +3992,8 @@ ModelImporter:
     107968: pPyramid2
     107970: rough
     107972: rough1
+    107974: rough1SmoothProxyGroup
+    107976: rough2
     400000: all_beams
     400002: all_ground
     400004: antenna
@@ -7979,6 +7981,8 @@ ModelImporter:
     407968: pPyramid2
     407970: rough
     407972: rough1
+    407974: rough1SmoothProxyGroup
+    407976: rough2
     2300000: beam1
     2300002: beam1 1
     2300004: beam2
@@ -10897,6 +10901,7 @@ ModelImporter:
     2305830: pPlane4
     2305832: pPyramid2
     2305834: rough1
+    2305836: rough2
     3300000: beam1
     3300002: beam1 1
     3300004: beam2
@@ -13815,6 +13820,7 @@ ModelImporter:
     3305830: pPlane4
     3305832: pPyramid2
     3305834: rough1
+    3305836: rough2
     4300000: exterior
     4300002: pCube9
     4300004: pCube8
@@ -16732,6 +16738,7 @@ ModelImporter:
     4305828: pPyramid2
     4305830: pPlane4
     4305832: rough1
+    4305834: rough2
     6400000: beam1
     6400002: beam1 1
     6400004: beam2
@@ -19630,6 +19637,7 @@ ModelImporter:
     6405790: pPlane4
     6405792: pPyramid2
     6405794: rough1
+    6405796: rough2
     9500000: //RootNode
   materials:
     importMaterials: 1

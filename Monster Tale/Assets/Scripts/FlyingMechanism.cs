@@ -20,40 +20,42 @@ public class FlyingMechanism : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (GvrController.AppButtonDown && sittingScript.isInsideSpaceship && !moveForward)
-        {
+    {
             Vector3 forward = spaceship.TransformDirection(Vector3.forward); // getting forward direction
 			cc.SimpleMove(forward * speed);
 			Debug.Log ("should move");
 		}
-        if (GvrController.IsTouching)
+    if (GvrController.IsTouching)
+    {
+        Vector2 touchPos = 2 * GvrController.TouchPos - Vector2.one;
+         //Debug.Log(touchPos);
+
+        if(touchPos.x >= touchPos.y && touchPos.y > -touchPos.x)
         {
-            Vector2 touchPos = 2 * GvrController.TouchPos - Vector2.one;
-             //Debug.Log(touchPos);
-
-            if(touchPos.x >= touchPos.y && touchPos.y > -touchPos.x)
-            {
-                Debug.Log("Right");
-            }
-            else if (touchPos.x <= touchPos.y && touchPos.y < -touchPos.x)
-            {
-                Debug.Log("Left");
-            }
-
-            else if (touchPos.y >= -touchPos.x && touchPos.y > touchPos.x)
-            {
-                Debug.Log("Bottom");
-            }
-
-            else if (touchPos.y <= -touchPos.x && touchPos.y < touchPos.x)
-            {
-                Debug.Log("Top");
-            }
-
+            Debug.Log("Right");
         }
+        else if (touchPos.x <= touchPos.y && touchPos.y < -touchPos.x)
+        {
+            Debug.Log("Left");
+        }
+
+        else if (touchPos.y >= -touchPos.x && touchPos.y > touchPos.x)
+        {
+            Debug.Log("Bottom");
+        }
+
+        else if (touchPos.y <= -touchPos.x && touchPos.y < touchPos.x)
+        {
+            Debug.Log("Top");
+        }
+
     }
+  }
 }

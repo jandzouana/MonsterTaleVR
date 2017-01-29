@@ -11,18 +11,15 @@ public class FlyingMechanism : MonoBehaviour {
 	private sitInSpaceship sittingScript; // function if is sitting
 	private CharacterController cc;
 
-	// Use this for initialization
-	void Start () {
-		sittingScript = player.GetComponent<sitInSpaceship> ();
-		cc = GetComponent<CharacterController>();
+    // Use this for initialization
+    void Start()
+    {
+        sittingScript = player.GetComponent<sitInSpaceship>();
+        cc = GetComponent<CharacterController>();
         speed = defspeed;
-		moveForward = false;
+        moveForward = false;
 
-	// Use this for initialization
-	void Start () {
-
-
-	}
+    }
 
 	// Update is called once per frame
 	void Update () {

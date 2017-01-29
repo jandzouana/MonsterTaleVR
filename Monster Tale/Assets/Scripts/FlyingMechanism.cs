@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class FlyingMechanism : MonoBehaviour {
+<<<<<<< HEAD
     public Transform spaceship;
     public float speed;
     public bool moveForward;
@@ -17,16 +18,25 @@ public class FlyingMechanism : MonoBehaviour {
 		cc = GetComponent<CharacterController>();
         speed = defspeed;
 		moveForward = false;
+=======
+
+	// Use this for initialization
+	void Start () {
+	
+>>>>>>> origin/spaceship
 	}
 	
 	// Update is called once per frame
 	void Update () {
+<<<<<<< HEAD
 		if (GvrController.AppButtonDown && sittingScript.isInsideSpaceship && !moveForward)
         {
             Vector3 forward = spaceship.TransformDirection(Vector3.forward); // getting forward direction
 			cc.SimpleMove(forward * speed);
 			Debug.Log ("should move");
 		}
+=======
+>>>>>>> origin/spaceship
         if (GvrController.IsTouching)
         {
             Vector2 touchPos = 2 * GvrController.TouchPos - Vector2.one;

@@ -9,63 +9,70 @@ public class spaceship_open : MonoBehaviour {
 	private spaceship_vicinity enteredValueScript;// script return that tell us whether the player is in the vicinity
 	private bool rotating = true;
 	public bool isOpen = false; 
+	public bool spaceshipClick;
 
+	// Function that uses transform functions to open the spaceship
+
+	public void SpaceshipClick(){
+		spaceshipClick = true;
+	}
+	public void SpaceshipOpen(){
+		rotating = true;
+		isOpen = true;
+		if (rotating)
+		{
+			Vector3 to = new Vector3(0, spaceshipTop.transform.localEulerAngles.y, tiltAngle);
+			if (Vector3.Distance(spaceshipTop.transform.eulerAngles, to) > 0.01f)
+				//if (spaceshipTop.transform.localEulerAngles.z < tiltAngle)
+			{
+				spaceshipTop.transform.eulerAngles = Vector3.Lerp(spaceshipTop.transform.rotation.eulerAngles, to, Time.deltaTime * smooth);
+			}
+			else
+			{
+				spaceshipTop.transform.eulerAngles = to;
+				rotating = false;
+			}
+		}
+	}
+	// Function that uses transform functions to close the spaceship
+	public void SpaceshipClose(){
+		isOpen = false;
+		rotating = true;
+		if (rotating)
+		{
+			Vector3 to = new Vector3(0, spaceshipTop.transform.localEulerAngles.y, 0);
+			//if (spaceshipTop.transform.localEulerAngles.z > tiltAngle)
+			if (Vector3.Distance(spaceshipTop.transform.eulerAngles, to) > 0.01f)
+			{
+				spaceshipTop.transform.eulerAngles = Vector3.Lerp(spaceshipTop.transform.rotation.eulerAngles, to, Time.deltaTime * smooth);
+			}
+			else
+			{
+				spaceshipTop.transform.eulerAngles = to;
+				rotating = false;
+			}
+		}
+	}
 	// Use this for initialization
 	void Start () {
 		enteredValueScript = spaceshipCollider.GetComponent <spaceship_vicinity> ();
 		isOpen = false;
+		spaceshipClick = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (enteredValueScript.entered == true) {
-			rotating = true;
-			isOpen = true;
-			if (rotating)
-   			{
-         		Vector3 to = new Vector3(0, spaceshipTop.transform.localEulerAngles.y, tiltAngle);
-				if (Vector3.Distance(spaceshipTop.transform.eulerAngles, to) > 0.01f)
-         		//if (spaceshipTop.transform.localEulerAngles.z < tiltAngle)
-				{
-             		spaceshipTop.transform.eulerAngles = Vector3.Lerp(spaceshipTop.transform.rotation.eulerAngles, to, Time.deltaTime * smooth);
-        		}
-        		else
-         		{
-             		spaceshipTop.transform.eulerAngles = to;
-             		rotating = false;
-         		}
-     		}
-		}
-
+		if (enteredValueScript.entered == true && !spaceshipClick) {
+			SpaceshipOpen ();
+			Debug.Log ("Hello");
+		} 
 		else if (enteredValueScript.entered == false) {
-			isOpen = false;
-			rotating = true;
-			if (rotating)
-   			{
-         		Vector3 to = new Vector3(0, spaceshipTop.transform.localEulerAngles.y, 0);
-         		Debug.Log(spaceshipTop.transform.localEulerAngles.z);
-         		//if (spaceshipTop.transform.localEulerAngles.z > tiltAngle)
-				if (Vector3.Distance(spaceshipTop.transform.eulerAngles, to) > 0.01f)
-				{
-             		spaceshipTop.transform.eulerAngles = Vector3.Lerp(spaceshipTop.transform.rotation.eulerAngles, to, Time.deltaTime * smooth);
-        		}
-        		else
-         		{
-             		spaceshipTop.transform.eulerAngles = to;
-             		rotating = false;
-         		}
-			}
-
-		}	
-
-
+			SpaceshipClose ();
+		} else if (spaceshipClick) {
+			SpaceshipClose();
+			Debug.Log ("Spaceship click");
+		}
 	}	
-
-	// Function that uses transform functions to open the spaceship
- 	private void SpaceshipOpen () {
-		//	float tiltAroundZ = Input.GetAxis("Horizontal") * tiltAngle;
-
- 	}
 }
 
 

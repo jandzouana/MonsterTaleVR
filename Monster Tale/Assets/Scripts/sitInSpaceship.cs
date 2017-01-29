@@ -22,4 +22,7 @@ public class sitInSpaceship : MonoBehaviour {
 }
 
 
-
+// player didnt move with the ship
+// it went down frame by frame
+// when the player enter the ship it kept moving for a bit
+// 

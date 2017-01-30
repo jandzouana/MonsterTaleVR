@@ -163,6 +163,7 @@
     <Compile Include="Assets\Scripts\door_vicinity.cs" />
     <Compile Include="Assets\Scripts\gate_button.cs" />
     <Compile Include="Assets\Scripts\gate_vicinity.cs" />
+    <Compile Include="Assets\Scripts\hide.cs" />
     <Compile Include="Assets\Scripts\remove_text_panel.cs" />
     <Compile Include="Assets\Scripts\set_camera_init.cs" />
     <Compile Include="Assets\Scripts\sitInSpaceship.cs" />

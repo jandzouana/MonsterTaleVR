@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class sitInSpaceship : MonoBehaviour {
-	private Vector3 spaceshipPosition = new Vector3(62.69f, 0.83f, -0.19f);
+	private Vector3 spaceshipPosition = new Vector3(62.69f, 3.65f, -0.19f);
 	public bool isInsideSpaceship;
 
 	public void TeleportToSpaceship(){

@@ -6,6 +6,9 @@ public class laserColorChange : MonoBehaviour {
 	public Material initialLaserMaterial;
 	public Material newLaserMaterial;
 	public bool buttonClicked;
+	public GameObject reticle;
+	public Material initialReticleMaterial;
+	public Material newReticleMaterial;
 
 	private bool gazedAt;
 	private float time;
@@ -14,6 +17,8 @@ public class laserColorChange : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gameObject.GetComponent<LineRenderer>().material = initialLaserMaterial;
+		reticle.GetComponent<Renderer>().material = initialReticleMaterial;
+
 		buttonClicked = false;
         line = GetComponent<LineRenderer>();
     }
@@ -24,6 +29,8 @@ public class laserColorChange : MonoBehaviour {
 		// if looking at the ship then color will change
 		if (gazedAt) {
 			gameObject.GetComponent<LineRenderer>().material = newLaserMaterial;
+			reticle.GetComponent<Renderer>().material = newReticleMaterial;
+
 
 			if (buttonClicked == true) {
 				//call teleport function
@@ -34,6 +41,8 @@ public class laserColorChange : MonoBehaviour {
 		//changes the color back
 		if (!gazedAt) {
 			gameObject.GetComponent<LineRenderer>().material = initialLaserMaterial;
+			reticle.GetComponent<Renderer>().material = initialReticleMaterial;
+
 		}
 	}
 

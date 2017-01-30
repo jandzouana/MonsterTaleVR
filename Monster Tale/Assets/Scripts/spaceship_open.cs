@@ -37,11 +37,12 @@ public class spaceship_open : MonoBehaviour {
 	// Function that uses transform functions to close the spaceship
 	public void SpaceshipClose(){
 		isOpen = false;
-		rotating = true;
+        /*rotating = true;
 		if (rotating)
 		{
-			Vector3 to = new Vector3(0, spaceshipTop.transform.localEulerAngles.y, 0);
-			//if (spaceshipTop.transform.localEulerAngles.z > tiltAngle)
+            Debug.Log("Spaceship close is rotating");
+	           Vector3 to = new Vector3(0, spaceshipTop.transform.localEulerAngles.y, 0);
+               //if (spaceshipTop.transform.localEulerAngles.z > tiltAngle)
 			if (Vector3.Distance(spaceshipTop.transform.eulerAngles, to) > 0.01f)
 			{
 				spaceshipTop.transform.eulerAngles = Vector3.Lerp(spaceshipTop.transform.rotation.eulerAngles, to, Time.deltaTime * smooth);
@@ -49,12 +50,15 @@ public class spaceship_open : MonoBehaviour {
 			else
 			{
 				spaceshipTop.transform.eulerAngles = to;
-				rotating = false;
+                rotating = false;
 			}
-		}
-	}
-	// Use this for initialization
-	void Start () {
+		}*/
+        Vector3 to = new Vector3(0, spaceshipTop.transform.localEulerAngles.y, 0);
+        spaceshipTop.transform.eulerAngles = to;
+
+    }
+    // Use this for initialization
+    void Start () {
 		enteredValueScript = spaceshipCollider.GetComponent <spaceship_vicinity> ();
 		isOpen = false;
 		spaceshipClick = false;
@@ -66,7 +70,7 @@ public class spaceship_open : MonoBehaviour {
 			SpaceshipOpen ();
 			Debug.Log ("Hello");
 		} 
-		else if (enteredValueScript.entered == false) {
+		else if (enteredValueScript.entered == false && !spaceshipClick) {
 			SpaceshipClose ();
 		} else if (spaceshipClick) {
 			SpaceshipClose();

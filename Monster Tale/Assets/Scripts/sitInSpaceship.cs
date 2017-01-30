@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class sitInSpaceship : MonoBehaviour {
-	private Vector3 spaceshipPosition = new Vector3(62.69f, 3.65f, -0.19f);
+	private Vector3 spaceshipPosition = new Vector3(68f, 3.94f, -0.19f); //location above spaceship seat
 	public bool isInsideSpaceship;
 
 	public void TeleportToSpaceship(){
@@ -25,4 +25,4 @@ public class sitInSpaceship : MonoBehaviour {
 // player didnt move with the ship
 // it went down frame by frame
 // when the player enter the ship it kept moving for a bit
-// 
+// player keeps walking if run and enter

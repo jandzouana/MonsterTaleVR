@@ -23,7 +23,7 @@ public class AutoWalk : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (moveForward) {
+		if (moveForward && canMove) {
 
 			Vector3 forward = vrCamera.TransformDirection (Vector3.forward); //checking for forward direction
 			cc.SimpleMove(forward * speed);
@@ -32,7 +32,7 @@ public class AutoWalk : MonoBehaviour {
         if ((Input.GetButtonDown("Fire1") || GvrController.AppButtonDown) && canMove && moveForward == false){
 			moveForward = true;
 		}
-        else if ((Input.GetButtonDown("Fire1") || GvrController.AppButtonDown) && moveForward == true){
+        else if ((Input.GetButtonDown("Fire1") || GvrController.AppButtonDown) && canMove && moveForward == true){
 			moveForward = false;
 		}
 

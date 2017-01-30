@@ -158,6 +158,8 @@
     <Compile Include="Assets\Scripts\ClickWalk.cs" />
     <Compile Include="Assets\Scripts\ControllerWalk.cs" />
     <Compile Include="Assets\Scripts\FlyingMechanism.cs" />
+    <Compile Include="Assets\Scripts\deactivate_collider.cs" />
+    <Compile Include="Assets\Scripts\disable_script.cs" />
     <Compile Include="Assets\Scripts\door_button_open.cs" />
     <Compile Include="Assets\Scripts\door_button_reject.cs" />
     <Compile Include="Assets\Scripts\door_vicinity.cs" />

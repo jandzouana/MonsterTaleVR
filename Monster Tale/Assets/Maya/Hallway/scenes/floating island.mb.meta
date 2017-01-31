@@ -85,6 +85,19 @@ ModelImporter:
     4300022: pPlane2
     4300024: pPlane1
     4300026: pCube3
+    6400000: house 1
+    6400002: house 2
+    6400004: island
+    6400006: pCube1
+    6400008: pCube1 1
+    6400010: pCube2
+    6400012: pCube2 1
+    6400014: pCube3
+    6400016: pCube3 1
+    6400018: pPlane1
+    6400020: pPlane1 1
+    6400022: pPlane2
+    6400024: pPlane2 1
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -112,7 +125,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -132,7 +145,6 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -143,10 +155,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
-    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1

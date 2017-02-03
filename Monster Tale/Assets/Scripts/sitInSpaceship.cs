@@ -12,9 +12,10 @@ public class sitInSpaceship : MonoBehaviour {
 		isInsideSpaceship = true;
         transform.SetParent(spaceship.transform); //attaches player to spaceship
         transform.eulerAngles = to; //rotates the player to face forward
-	}
-	// Use this for initialization
-	void Start () {
+
+    }
+    // Use this for initialization
+    void Start () {
 		isInsideSpaceship = false;
 	}
 	

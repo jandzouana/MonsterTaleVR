@@ -9,9 +9,12 @@ public class FlyingMechanism : MonoBehaviour {
     public bool moveBack;
     public GameObject player; // where script for sitInSpaceship is located
     public bool hasBeenDelayed;
+    public float holdTime = 2.0f;
+    public GameObject safeZone;
 
     private float defSpeed = 0.50f;
     private float defTurnSpeed = 30f;
+    private float counter;
 
     private sitInSpaceship sittingScript; // function if is sitting
 	private CharacterController cc;
@@ -20,6 +23,13 @@ public class FlyingMechanism : MonoBehaviour {
     private float time = 3f;
     public GameObject target;
 
+    void OnCollisionEnter(Collider col)
+    {
+        if (col.CompareTag("safe"))
+        {
+
+        }
+    }
 
     public void DeactivateTarget()
     {
@@ -41,6 +51,7 @@ public class FlyingMechanism : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        Debug.Log("Counter at start:" + counter);
         //Moving forward
         if (moveForward)
         {
@@ -63,15 +74,37 @@ public class FlyingMechanism : MonoBehaviour {
         {
             moveForward = false;
         }
+        //While app button is being pressed, check if 
+        if (GvrController.AppButton && sittingScript.isInsideSpaceship && hasBeenDelayed)
+        {
+            Debug.Log(counter);
+            counter += Time.deltaTime;
+            if (counter > holdTime)
+            {
+                Debug.Log("Time passed");
+                moveBack = false;
+                moveForward = false;
+                //unparent player from spaceship
+                player.transform.parent = null;
+                //move the player
+            }
+        }
         //Reverse
         if (GvrController.AppButtonDown && sittingScript.isInsideSpaceship && !moveBack && hasBeenDelayed)
         {
             moveForward = false;
             moveBack = true;
+
         }
         else if (GvrController.AppButtonDown && sittingScript.isInsideSpaceship && moveBack && hasBeenDelayed)
         {
+            counter += Time.deltaTime;
             moveBack = false;
+
+        }
+        if (GvrController.AppButtonUp)
+        {
+            counter = 0;
         }
         if (GvrController.IsTouching && sittingScript.isInsideSpaceship)
         {

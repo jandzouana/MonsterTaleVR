@@ -15,10 +15,12 @@ public class spaceship_open : MonoBehaviour {
 
 	public void SpaceshipClick(){
 		spaceshipClick = true;
+        isOpen = false;
 	}
 	public void SpaceshipOpen(){
 		rotating = true;
-		isOpen = true;
+        Debug.Log("opening");
+        isOpen = true;
 		if (rotating)
 		{
 			Vector3 to = new Vector3(0, spaceshipTop.transform.localEulerAngles.y, tiltAngle);
@@ -33,9 +35,10 @@ public class spaceship_open : MonoBehaviour {
 				rotating = false;
 			}
 		}
-	}
-	// Function that uses transform functions to close the spaceship
-	public void SpaceshipClose(){
+
+    }
+    // Function that uses transform functions to close the spaceship
+    public void SpaceshipClose(){
 		isOpen = false;
         /*rotating = true;
 		if (rotating)
@@ -68,15 +71,17 @@ public class spaceship_open : MonoBehaviour {
 	void Update () {
 		if (enteredValueScript.entered == true && !spaceshipClick) {
 			SpaceshipOpen ();
-			Debug.Log ("Hello");
-		} 
-		else if (enteredValueScript.entered == false && !spaceshipClick) {
+            Debug.Log("opening");
+        }
+        else if (enteredValueScript.entered == false && !spaceshipClick) {
 			SpaceshipClose ();
-		} else if (spaceshipClick) {
+            Debug.Log("closing");
+        }
+        else if (spaceshipClick) {
 			SpaceshipClose();
-			Debug.Log ("Spaceship click");
-		}
-	}	
+            Debug.Log("closing");
+        }
+    }	
 }
 
 

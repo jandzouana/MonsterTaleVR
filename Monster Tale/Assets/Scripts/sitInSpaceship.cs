@@ -2,16 +2,20 @@
 using System.Collections;
 
 public class sitInSpaceship : MonoBehaviour {
-	private Vector3 spaceshipPosition = new Vector3(68f, 3.94f, -0.19f); //location above spaceship seat
 	public bool isInsideSpaceship;
     public GameObject spaceship;
 
 	public void TeleportToSpaceship(){
+        float xpositionSpaceship = spaceship.transform.position.x;
+        float ypositionPlayerSpaceship = spaceship.transform.position.y;
+        float zpositionPlayerSpaceship = spaceship.transform.position.z;
         Vector3 to = new Vector3(0, 0, 0);
-        transform.localPosition = spaceshipPosition; //teleports player to spaceship location
+        transform.localPosition = new Vector3(xpositionSpaceship, ypositionPlayerSpaceship, zpositionPlayerSpaceship); //teleports player to spaceship location
 		isInsideSpaceship = true;
         transform.SetParent(spaceship.transform); //attaches player to spaceship
         transform.eulerAngles = to; //rotates the player to face forward
+        //activate character controller for spaceship
+        spaceship.GetComponent<CharacterController>().enabled = true;
 
     }
     // Use this for initialization
@@ -26,8 +30,3 @@ public class sitInSpaceship : MonoBehaviour {
 
 }
 
-
-// player didnt move with the ship
-// it went down frame by frame
-// when the player enter the ship it kept moving for a bit
-// player keeps walking if run and enter

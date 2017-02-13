@@ -4,63 +4,86 @@ using System.Collections;
 public class FlyingMechanism : MonoBehaviour {
     public Transform spaceship;
     public float speed;
+    public float reverseSpeed;
     public float turnSpeed;
-    public bool moveForward;
-    public bool moveBack;
     public GameObject player; // where script for sitInSpaceship is located
-    public bool hasBeenDelayed;
-    public float holdTime = 2.0f;
+    public float holdTime = 1.0f;
     public GameObject safeZone;
+    public AutoWalk autoWalkScript;
+    public spaceship_open spaceShipScript;
+    public GameObject spaceshipScriptPart;
+    public GameObject controller;
+    public GameObject spaceshipMB;
+    public bool hitSafeZone;
+    public GameObject target;
 
+    private bool moveForward;
+    private bool moveBack;
+    private bool hasBeenDelayed;
     private float defSpeed = 0.50f;
     private float defTurnSpeed = 30f;
     private float counter;
-
     private sitInSpaceship sittingScript; // function if is sitting
 	private CharacterController cc;
     private CharacterController pcc;
-    private bool isCoroutineExecuting = false;
-    private float time = 3f;
-    public GameObject target;
 
-    void OnCollisionEnter(Collider col)
+    private void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("safe"))
         {
-
+            hitSafeZone = true;
         }
+    }
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.CompareTag("safe"))
+        {
+            hitSafeZone = true;
+        }
+    }
+    private void OnTriggerExit(Collider col)
+    {
+        hitSafeZone = false;
     }
 
     public void DeactivateTarget()
     {
         target.GetComponent<spaceship_open>().enabled = false;
     }
-
+    public void ActivateTarget()
+    {
+        target.GetComponent<spaceship_open>().enabled = true;
+    }
     // Use this for initialization
     void Start()
     {
         sittingScript = player.GetComponent<sitInSpaceship>();
         cc = GetComponent<CharacterController>();
         speed = defSpeed;
+        reverseSpeed = .1f;
         turnSpeed = defTurnSpeed;
         moveForward = false;
         moveBack = false;
         pcc = player.GetComponent<CharacterController>();
         hasBeenDelayed = false;
+        autoWalkScript = player.GetComponent<AutoWalk>();
+        spaceShipScript = spaceshipScriptPart.GetComponent<spaceship_open>();
+        GetComponent<CharacterController>().enabled = false;//disables character controller on start (roatational problems) 
     }
 
     // Update is called once per frame
     void Update () {
-        Debug.Log("Counter at start:" + counter);
         //Moving forward
         if (moveForward)
         {
+            speed = defSpeed;
             Vector3 forward = spaceship.TransformDirection(Vector3.forward); // getting forward direction
             cc.Move(forward * speed);
 		}
         //Moving backward
         if (moveBack)
         {
+            speed = reverseSpeed;
             Vector3 forward = spaceship.TransformDirection(Vector3.forward); // getting forward direction
             cc.Move(-forward * speed);
         }
@@ -74,19 +97,44 @@ public class FlyingMechanism : MonoBehaviour {
         {
             moveForward = false;
         }
-        //While app button is being pressed, check if 
-        if (GvrController.AppButton && sittingScript.isInsideSpaceship && hasBeenDelayed)
+        //While app button is being pressed, check if it has been held for holdTime seconds
+        if (GvrController.AppButton && sittingScript.isInsideSpaceship && hasBeenDelayed && hitSafeZone) //add hitsafezone
         {
-            Debug.Log(counter);
             counter += Time.deltaTime;
-            if (counter > holdTime)
+            if (counter > .25f)
             {
-                Debug.Log("Time passed");
                 moveBack = false;
                 moveForward = false;
+            }
+            if (counter > holdTime)
+            {      
                 //unparent player from spaceship
                 player.transform.parent = null;
+                
+                //rotate spaceship to original position
+                Vector3 to = new Vector3(0, 0, 0);
+                transform.eulerAngles = to; //resets the rotation of spaceship
+                player.transform.eulerAngles = to; //resets the rotation of player
+
                 //move the player
+                float xpositionPlayer = player.transform.position.x;
+                float ypositionPlayer = player.transform.position.y;
+                float zpositionPlayer = player.transform.position.z;
+                player.transform.position = new Vector3(xpositionPlayer-5, ypositionPlayer, zpositionPlayer-5);
+                sittingScript.isInsideSpaceship = false;
+
+                //enable player walking
+                autoWalkScript.canMove = true;
+                autoWalkScript.moveForward = false;
+
+                //disables character controle
+                GetComponent<CharacterController>().enabled = false;
+                //Activating spaceship open script
+                ActivateTarget();
+                spaceShipScript.spaceshipClick = false;
+                hasBeenDelayed = false;
+                controller.SetActive(true); //shows controller;
+                spaceshipMB.GetComponent<CapsuleCollider>().enabled = true;//enables collider on spaceship
             }
         }
         //Reverse
@@ -106,31 +154,32 @@ public class FlyingMechanism : MonoBehaviour {
         {
             counter = 0;
         }
-        if (GvrController.IsTouching && sittingScript.isInsideSpaceship)
+        if (GvrController.IsTouching && sittingScript.isInsideSpaceship && hasBeenDelayed)
         {
+            //disables the spaceship open script
             DeactivateTarget();
             Vector2 touchPos = 2 * GvrController.TouchPos - Vector2.one;
 
             if(touchPos.x >= touchPos.y && touchPos.y > -touchPos.x)
             {
-                Debug.Log("Right");
+                //Debug.Log("Right");
                 transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
             }
             else if (touchPos.x <= touchPos.y && touchPos.y < -touchPos.x)
             {
-                Debug.Log("Left");
+                //Debug.Log("Left");
                 transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
             }
 
             else if (touchPos.y >= -touchPos.x && touchPos.y > touchPos.x)
             {
-                Debug.Log("Bottom");
+                //Debug.Log("Bottom");
                 transform.Rotate(Vector3.right, turnSpeed * Time.deltaTime);
             }
 
             else if (touchPos.y <= -touchPos.x && touchPos.y < touchPos.x)
             {
-                Debug.Log("Top");
+                //Debug.Log("Top");
                 transform.Rotate(Vector3.right, -turnSpeed * Time.deltaTime);
             }
 

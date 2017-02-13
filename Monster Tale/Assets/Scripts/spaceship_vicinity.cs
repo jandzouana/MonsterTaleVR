@@ -19,13 +19,19 @@ public class spaceship_vicinity : MonoBehaviour {
 	private void OnTriggerEnter (Collider col) {
 		if (col.CompareTag("Player")) {
 			entered = true;
-			Debug.Log("entered"); //************
 		}	
 	}
 
-	// Function to see if player is in the collider spaceship area and leaves
-	private void OnTriggerExit (Collider col) {
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            entered = true;
+        }
+    }
+
+    // Function to see if player is in the collider spaceship area and leaves
+    private void OnTriggerExit (Collider col) {
 			entered = false;
-			Debug.Log("exited");// ***************
 	}
 }

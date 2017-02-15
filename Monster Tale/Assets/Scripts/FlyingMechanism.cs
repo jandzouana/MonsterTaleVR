@@ -88,12 +88,12 @@ public class FlyingMechanism : MonoBehaviour {
             cc.Move(-forward * speed);
         }
         //Forward
-        if(GvrController.ClickButtonDown && sittingScript.isInsideSpaceship && !moveForward &&hasBeenDelayed) 
+        if((GvrController.ClickButtonDown || Input.GetButtonDown("Fire1")) && sittingScript.isInsideSpaceship && !moveForward &&hasBeenDelayed) 
         {
             moveForward = true;
             moveBack = false;
         }
-        else if (GvrController.ClickButtonDown && sittingScript.isInsideSpaceship && moveForward &&hasBeenDelayed)
+        else if ((GvrController.ClickButtonDown || Input.GetButtonDown("Fire1")) && sittingScript.isInsideSpaceship && moveForward &&hasBeenDelayed)
         {
             moveForward = false;
         }

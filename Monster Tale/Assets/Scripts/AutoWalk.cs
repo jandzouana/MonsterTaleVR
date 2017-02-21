@@ -5,7 +5,7 @@ public class AutoWalk : MonoBehaviour {
 
 	public Transform vrCamera;
 	public float speed;
-	private float defspeed = 3.0f;
+	private float defspeed = 2.25f;
 	public bool moveForward;
 	private CharacterController cc;
     public bool canMove;

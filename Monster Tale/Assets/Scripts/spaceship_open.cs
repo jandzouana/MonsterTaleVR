@@ -55,7 +55,7 @@ public class spaceship_open : MonoBehaviour {
                 rotating = false;
 			}
 		}*/
-        Vector3 to = new Vector3(0, spaceshipTop.transform.localEulerAngles.y, 0);
+        Vector3 to = new Vector3(0, spaceshipTop.transform.localEulerAngles.y, 2.559f);
         spaceshipTop.transform.eulerAngles = to;
 
     }

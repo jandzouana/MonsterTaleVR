@@ -3,7 +3,8 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FlyingMechanism.cs">
     <Files>
       <File FileName="Assets\Particlecollection_Free samples\READ ME.txt" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FlyingMechanism.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FlyingMechanism.cs" Line="70" Column="11" />
+      <File FileName="Assets\Scripts\AutoWalk.cs" Line="21" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

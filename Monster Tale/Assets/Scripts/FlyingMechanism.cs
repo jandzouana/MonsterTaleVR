@@ -3,8 +3,8 @@ using System.Collections;
 
 public class FlyingMechanism : MonoBehaviour {
     public Transform spaceship;
-    public float speed;
-    public float reverseSpeed;
+    public float speed = 0.25f;
+    public float reverseSpeed = 0.1f;
     public float turnSpeed;
     public GameObject player; // where script for sitInSpaceship is located
     public float holdTime = 1.0f;
@@ -16,7 +16,9 @@ public class FlyingMechanism : MonoBehaviour {
     public GameObject spaceshipMB;
     public bool hitSafeZone;
     public GameObject target;
+    public float rotationSpeed; //gyro turn
 
+    private float step;
     private bool moveForward;
     private bool moveBack;
     private bool hasBeenDelayed;
@@ -27,6 +29,12 @@ public class FlyingMechanism : MonoBehaviour {
 	private CharacterController cc;
     private CharacterController pcc;
 
+    private void Gyro()
+    {
+        Quaternion rotation = Quaternion.Euler(180, 0, 0);
+        transform.rotation = Input.gyro.attitude * rotation;
+        //transform.Rotate(-Input.gyro.rotationRateUnbiased.x, -Input.gyro.rotationRateUnbiased.y, 0);
+    }
     private void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("safe"))
@@ -59,9 +67,9 @@ public class FlyingMechanism : MonoBehaviour {
     {
         sittingScript = player.GetComponent<sitInSpaceship>();
         cc = GetComponent<CharacterController>();
-        speed = defSpeed;
-        reverseSpeed = .1f;
+        //speed = defSpeed;
         turnSpeed = defTurnSpeed;
+        rotationSpeed = defTurnSpeed; 
         moveForward = false;
         moveBack = false;
         pcc = player.GetComponent<CharacterController>();
@@ -69,10 +77,15 @@ public class FlyingMechanism : MonoBehaviour {
         autoWalkScript = player.GetComponent<AutoWalk>();
         spaceShipScript = spaceshipScriptPart.GetComponent<spaceship_open>();
         GetComponent<CharacterController>().enabled = false;//disables character controller on start (roatational problems) 
+        Input.gyro.enabled = true; //enabling gyro to rotate spaceship with cardboard
     }
 
     // Update is called once per frame
     void Update () {
+        //if (sittingScript.isInsideSpaceship)
+      //  {
+            //Gyro();
+       // }
         //Moving forward
         if (moveForward)
         {

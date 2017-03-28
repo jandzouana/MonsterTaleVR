@@ -5,7 +5,6 @@ using UnityEngine;
 public class door_button_open : MonoBehaviour {
     public GameObject door; //door that needs to be animated
     public GameObject button; //first part of button
-    public GameObject button2; //2nd part of button
 
     public Material buttonGlow; //shader for the glow on buttons
     public GameObject DistanceCollider;
@@ -20,7 +19,6 @@ public class door_button_open : MonoBehaviour {
 
     private bool rotating; //for door roatation
     private Material[] buttonMaterials; //button's material array (from mesh renderer)
-    private Material[] buttonMaterials2;
 
     //Enables and disables movement when player gazes at button
     public void DisableCollider()
@@ -37,11 +35,8 @@ public class door_button_open : MonoBehaviour {
     public void ChangeButtonColor()
     {
         buttonMaterials[1] = buttonGlow;
-        buttonMaterials2[1] = buttonGlow;
-
 
         button.GetComponent<Renderer>().materials = buttonMaterials;
-        button2.GetComponent<Renderer>().materials = buttonMaterials;
     }
 
     //plays button sound and door open sound;
@@ -103,7 +98,6 @@ public class door_button_open : MonoBehaviour {
 	void Start () {
         script = DistanceCollider.GetComponent<door_vicinity>();
         buttonMaterials = button.GetComponent<Renderer>().materials;
-        buttonMaterials2 = button2.GetComponent<Renderer>().materials;
         interacted = false;
         canRotate = false;
     }

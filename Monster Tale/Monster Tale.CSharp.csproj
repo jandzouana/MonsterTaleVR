@@ -163,6 +163,7 @@
     <Compile Include="Assets\Scripts\AutoWalk.cs" />
     <Compile Include="Assets\Scripts\ClickWalk.cs" />
     <Compile Include="Assets\Scripts\ControllerWalk.cs" />
+    <Compile Include="Assets\Scripts\FadeObjectInOut.cs" />
     <Compile Include="Assets\Scripts\FlyingMechanism.cs" />
     <Compile Include="Assets\Scripts\deactivate_collider.cs" />
     <Compile Include="Assets\Scripts\disable_script.cs" />
@@ -173,9 +174,11 @@
     <Compile Include="Assets\Scripts\gate_vicinity.cs" />
     <Compile Include="Assets\Scripts\hide.cs" />
     <Compile Include="Assets\Scripts\hide_on_collision.cs" />
+    <Compile Include="Assets\Scripts\play_sound.cs" />
     <Compile Include="Assets\Scripts\remove_from_spaceship.cs" />
     <Compile Include="Assets\Scripts\remove_text_panel.cs" />
     <Compile Include="Assets\Scripts\set_camera_init.cs" />
+    <Compile Include="Assets\Scripts\show_instructions.cs" />
     <Compile Include="Assets\Scripts\sitInSpaceship.cs" />
     <Compile Include="Assets\Scripts\spaceship_open.cs" />
     <Compile Include="Assets\Scripts\spaceship_vicinity.cs" />

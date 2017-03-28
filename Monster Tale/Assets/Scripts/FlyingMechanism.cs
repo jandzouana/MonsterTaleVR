@@ -4,7 +4,7 @@ using System.Collections;
 public class FlyingMechanism : MonoBehaviour {
     public Transform spaceship;
     public float speed = 0.25f;
-    public float reverseSpeed = 0.1f;
+    public float reverseSpeed = 0.25f;
     public float turnSpeed;
     public GameObject player; // where script for sitInSpaceship is located
     public float holdTime = 1.0f;

@@ -3,10 +3,11 @@ using System.Collections;
 
 public class spaceship_vicinity : MonoBehaviour {
 	public bool entered;
+    public GameObject sound;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		entered = false;
 	}
 	
@@ -14,11 +15,17 @@ public class spaceship_vicinity : MonoBehaviour {
 	void Update () {
 		
 	}
+    //Plays sound when in the vicinity of the spaceship
+    public void PlaySound()
+    {
+        sound.GetComponent<AudioSource>().Play();
+    }
 
-	// Function to see if player is in the collider spaceship area
-	private void OnTriggerEnter (Collider col) {
+    // Function to see if player is in the collider spaceship area
+    private void OnTriggerEnter (Collider col) {
 		if (col.CompareTag("Player")) {
 			entered = true;
+            PlaySound();
 		}	
 	}
 

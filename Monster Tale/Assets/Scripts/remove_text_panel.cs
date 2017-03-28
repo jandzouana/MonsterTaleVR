@@ -10,6 +10,7 @@ public class remove_text_panel : MonoBehaviour {
     public GameObject panel;
     public door_button_open script;
     public GameObject scriptObject;
+    public string obj;
 
     //Hides selected text
     public void DisableText()
@@ -18,7 +19,7 @@ public class remove_text_panel : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("Player"))
+        if (col.CompareTag(obj))
         {
             DisableText();
         }

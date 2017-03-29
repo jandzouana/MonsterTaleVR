@@ -1,0 +1,4 @@
+-add movie scene
+-remove landing after exit and create enable new landing zone
+-change text in guidance panel
+-disable opening sound

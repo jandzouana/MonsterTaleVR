@@ -17,8 +17,8 @@ public class FlyingMechanism : MonoBehaviour {
     public bool hitSafeZone;
     public GameObject target;
     public float rotationSpeed; //gyro turn
+    public GameObject exitSound;
 
-    private float step;
     private bool moveForward;
     private bool moveBack;
     private bool hasBeenDelayed;
@@ -29,12 +29,11 @@ public class FlyingMechanism : MonoBehaviour {
 	private CharacterController cc;
     private CharacterController pcc;
 
-    private void Gyro()
+    public void PlaySound(GameObject sound)
     {
-        Quaternion rotation = Quaternion.Euler(180, 0, 0);
-        transform.rotation = Input.gyro.attitude * rotation;
-        //transform.Rotate(-Input.gyro.rotationRateUnbiased.x, -Input.gyro.rotationRateUnbiased.y, 0);
+        sound.GetComponent<AudioSource>().Play();
     }
+
     private void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("safe"))
@@ -110,6 +109,8 @@ public class FlyingMechanism : MonoBehaviour {
         {
             moveForward = false;
         }
+
+        //Exiting out of spaceship
         //While app button is being pressed, check if it has been held for holdTime seconds
         if (GvrController.AppButton && sittingScript.isInsideSpaceship && hasBeenDelayed && hitSafeZone) //add hitsafezone
         {
@@ -140,7 +141,10 @@ public class FlyingMechanism : MonoBehaviour {
                 autoWalkScript.canMove = true;
                 autoWalkScript.moveForward = false;
 
-                //disables character controle
+                //play sound
+                PlaySound(exitSound);
+
+                //disables character control
                 GetComponent<CharacterController>().enabled = false;
                 //Activating spaceship open script
                 ActivateTarget();
@@ -203,3 +207,12 @@ public class FlyingMechanism : MonoBehaviour {
         }
     }
 }
+
+/*
+ *     private void Gyro()
+    {
+        Quaternion rotation = Quaternion.Euler(180, 0, 0);
+        transform.rotation = Input.gyro.attitude * rotation;
+        //transform.Rotate(-Input.gyro.rotationRateUnbiased.x, -Input.gyro.rotationRateUnbiased.y, 0);
+    }
+*/

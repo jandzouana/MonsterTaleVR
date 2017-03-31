@@ -3,7 +3,7 @@
 ## Description
 A quick interactive Virtual Reality experience I have designed in Unity. Initially this project was designed for Cardboard, but it has been modified to run on Google Daydream. It is based on an [animation](https://www.youtube.com/watch?v=4El3XyjnP_M)
 I have created in 2015.
-![mtscreen](https://photos-6.dropbox.com/t/2/AACQ8kR2xiFeJhU60HCPUYLGIkWHDcqYzw9j9aOu3jJn5Q/12/532116820/jpeg/32x32/1/_/1/2/Monster%20Tale.jpg/EIyI86AEGJwPIAIoAg/VT001WfXRnK2Jc-40nKojEViIexQRV7_uZKnRaJbcqU?size=1024x768&size_mode=3)
+![mtscreen](https://thejandz.files.wordpress.com/2017/03/monster-tale.jpg?w=585)
 
 ## Built With
 

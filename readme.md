@@ -1,9 +1,9 @@
 # Monster Tale VR
-![mtscreenunity](http://imgur.com/rg3z14r "Screenshot of project")
+![mtscreenunity](https://i0.wp.com/thejandz.files.wordpress.com/2017/03/1.png?w=2000&h=&crop&ssl=1 "Screenshot of project")
 ## Description
 A quick interactive Virtual Reality experience I have designed in Unity. Initially this project was designed for Cardboard, but it has been modified to run on Google Daydream. It is based on an [animation](https://www.youtube.com/watch?v=4El3XyjnP_M)
 I have created in 2015.
-![mtscreen](https://thejandz.files.wordpress.com/2017/03/monster-tale.jpg?w=585 "Screenshot of animation")
+![mtscreen](http://i.imgur.com/rg3z14r.jpg "Screenshot of animation")
 
 ## Built With
 

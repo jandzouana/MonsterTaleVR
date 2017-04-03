@@ -18,6 +18,7 @@ public class FlyingMechanism : MonoBehaviour {
     public GameObject target;
     public float rotationSpeed; //gyro turn
     public GameObject exitSound;
+    public GameObject spaceshipOpenSound;
 
     private bool moveForward;
     private bool moveBack;
@@ -136,13 +137,15 @@ public class FlyingMechanism : MonoBehaviour {
                 float zpositionPlayer = player.transform.position.z;
                 player.transform.position = new Vector3(xpositionPlayer-5, ypositionPlayer, zpositionPlayer-5);
                 sittingScript.isInsideSpaceship = false;
-
                 //enable player walking
                 autoWalkScript.canMove = true;
                 autoWalkScript.moveForward = false;
 
                 //play sound
                 PlaySound(exitSound);
+
+                //enable spaceshipopen gameobject
+                spaceshipOpenSound.SetActive(true);
 
                 //disables character control
                 GetComponent<CharacterController>().enabled = false;

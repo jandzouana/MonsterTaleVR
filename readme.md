@@ -15,9 +15,9 @@ You will need either Unity Daydream Preview, or Unity 5.6x. Additionally, you wi
 [here](https://developers.google.com/vr/daydream/controller-emulator)
 and follow the directions to setup the controller emulator.
 Once you are done, open Unity, and open Monster Tale (inside MonsterTaleVR) as a project. Click play and interact with the environment using the controller emulator.
-## Authors
+## Creators
 
-* **Jessica Andzouana** - *Initial work*
+**Jessica Andzouana** - *Initial work*
 
 See also the list of [contributors](https://github.com/jandzouana/MonsterTaleVR/graphs/contributors) who participated in this project.
 

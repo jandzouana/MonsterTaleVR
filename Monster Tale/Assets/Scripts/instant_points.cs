@@ -1,27 +1,44 @@
 ﻿using UnityEngine;
+using UnityEngine.UI; //needed to use Text
 using System.Collections;
 
 public class instant_points : MonoBehaviour {
     private sitInSpaceship sittingScript; // function if is sitting
-    public bool interacted;
+    public bool interacted; //can only play game once
     private GameObject point;
     public GameObject origPoint;
     public GameObject pointContainer;
     public GameObject player;
-    private int count;
     public GameObject pingAudio;
     public GameObject landing;
-    Vector3 pos;
+    public GameObject panel;
+    public GameObject textPanel; //instructions to spaceship
+    public string initialText;
+    public string text2, text3, text4;
+    public GameObject newSafeZone;
+
+    private Vector3 pos;
+    private string tempString;
+    private Text txtRef;
+    private int count;
+
     // Use this for initialization
     void Start()
     {
         sittingScript = player.GetComponent<sitInSpaceship>();
         interacted = false;
+        txtRef = textPanel.GetComponent<Text>();
         count = 0;
+        tempString = initialText;
+        txtRef.text = initialText;
     }
     public void PlaySound(GameObject sound)
     {
         sound.GetComponent<AudioSource>().Play();
+    }
+    public void ChangeText(Text panel, string text)
+    {
+        panel.text = text;
     }
     void OnTriggerEnter(Collider col)
     {
@@ -30,6 +47,7 @@ public class instant_points : MonoBehaviour {
             Destroy(point.gameObject);
             PlaySound(pingAudio);
             //creates points(one at a time) at these locations
+            //text changes depending on which point is captured
             switch (count)
             {
                 case 0:
@@ -37,22 +55,22 @@ public class instant_points : MonoBehaviour {
                     break;
                 case 1:
                     pos = new Vector3(0, 30, 0);
+                    tempString = text2;
                     break;
                 case 2:
-                    pos = new Vector3(0, 30, 120);
+                    pos = new Vector3(206, 28, 4);
+                    tempString = text3;
                     break;
                 case 3:
-                    pos = new Vector3(206, 28, 4);
-                    break;
-                case 4:
                     //activating landing spot
                     landing.SetActive(true);
+                    tempString = text4;
                     break;
                 default:
                     break;
             }
-            if(count!=4)InstantiatePoint(pos);
-            Debug.Log("collided");
+            if(count!=3)InstantiatePoint(pos);
+            ChangeText(txtRef, tempString);
             count++;
         }
     }
@@ -69,10 +87,21 @@ public class instant_points : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("interacted:"+interacted);
         if (sittingScript.isInsideSpaceship && !interacted)
         {
-            pos = new Vector3(67.4f, 0, 29.3f);
+            //initial starting point
+            pos = new Vector3(67.4f, 3, 29.3f);
             InstantiatePoint(pos);
+        }
+        //count should compare to the last point.
+        if (!sittingScript.isInsideSpaceship && interacted)
+        {
+            Debug.Log("Yes");
+            panel.SetActive(false); //disable text panel after all the points have been captured
+            landing.SetActive(false); //disables beginner landing marker
+            newSafeZone.SetActive(true); //enables bigger landing space
+
         }
     }
 }

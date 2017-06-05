@@ -10,6 +10,13 @@ public class OvrAvatarHand : MonoBehaviour, IAvatarPart
 
     public void UpdatePose(OvrAvatarDriver.ControllerPose pose)
     {
+	//This will enable collisions only when the hand trigger is pressed enough to make a fist.
+		 /*
+		 if (GetComponent<Rigidbody>()  != null)
+		{
+			GetComponent<Rigidbody>().detectCollisions = pose.handTrigger >= 0.75f;
+		}
+		*/
     }
 
     public void SetAlpha(float alpha)

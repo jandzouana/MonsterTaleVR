@@ -2472,19 +2472,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 404092, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 404092, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.83044624
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 404092, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5570988
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 404092, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 112.28901
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 404092, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3508,7 +3508,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 404092, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 404092, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20921,6 +20921,10 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1 &1226992913 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 104092, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
+  m_PrefabInternal: {fileID: 818973210}
 --- !u!1001 &1248989807
 Prefab:
   m_ObjectHideFlags: 0
@@ -21401,15 +21405,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ab7bb1a37f8d14f992e6f48ccc6876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 818973211}
-  button2: {fileID: 2006873110}
-  script: {fileID: 0}
-  scriptObject: {fileID: 0}
-  buttonGlow: {fileID: 0}
-  DistanceCollider: {fileID: 0}
-  activeCamera: {fileID: 0}
-  sound: {fileID: 0}
+  buttons:
+  - {fileID: 2006873110}
+  - {fileID: 818973211}
+  script: {fileID: 1988663106}
+  scriptObject: {fileID: 1988663103}
+  buttonGlow: {fileID: 2100000, guid: 4d28ff115d730e24f83dd437fc433d3f, type: 2}
+  sounds:
+  - {fileID: 1821360575}
+  - {fileID: 1568551159}
   interacted: 0
+  door: {fileID: 1226992913}
+  tiltAngle: 110
+  smooth: 0.5
 --- !u!1 &1445827038
 GameObject:
   m_ObjectHideFlags: 0
@@ -23346,10 +23354,8 @@ MonoBehaviour:
   timeLower: 0.2
   timeUpper: 0.2
   distance: -0.03
-  distanceTrigger: 1
   buttonPush: {fileID: 818973211}
   OHCscript: {fileID: 776111117}
-  switchTrigger: 0
 --- !u!1 &2006873110 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 101028, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}

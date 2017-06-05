@@ -12,7 +12,6 @@ public class ButtonInteract : MonoBehaviour {
     private bool leftHasTouched;
     private bool rightHasTouched;
 
-    private bool rest;
     public bool on;
     //specify how fast the button lowers and bounces back to the origial position
 	public float timeLower;
@@ -20,16 +19,16 @@ public class ButtonInteract : MonoBehaviour {
 	//specify how far you can push the button
 	public float distance;
 	//how far you need to push the button to trigger an action
-	public float distanceTrigger;
+	private float distanceTrigger;
 
     //game object that contains button
     public GameObject buttonPush;
-
     //script that enables haptic feedback
     public OculusHapticsController OHCscript;
 
     //Switch used to trigger an action when button collides with it
-    public bool switchTrigger; //if button collided with switch, then switchTrigger is true
+    private bool switchTrigger; //if button collided with switch, then switchTrigger is true
+    private bool rest; //if button is not moving, rest is true
 
     public void OnTriggerEnter(Collider col){
         //Checking collisions with hands
@@ -59,13 +58,8 @@ public class ButtonInteract : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //vibrate when near button
-        if (leftHasTouched) OHCscript.SimpleVibrate("left", 0);
-        else if (rightHasTouched && t >= timeLower) OHCscript.SimpleVibrate("right", 0);
-
         //If the player's hand/finger has collided, then lower button in timeLower time
         if (hasTouched){
-            on = true;
             s = 0;
 		    t+=Time.deltaTime/timeLower;
             buttonPush.transform.localPosition = Vector3.Lerp(startPosition, endPosition, t);
@@ -80,6 +74,10 @@ public class ButtonInteract : MonoBehaviour {
             buttonPush.transform.localPosition = Vector3.Lerp(startPosition, initialPosition, s);
             rest = true;
 		}
-
-	}
+        //turn button on when user has sufficiently pressed the button
+        if (hasTouched && t >= timeLower) on = true;
+        //vibrate when user pressed button enough
+        if (leftHasTouched && t >= timeLower) OHCscript.SimpleVibrate("left", 0);
+        else if (rightHasTouched && t >= timeLower) OHCscript.SimpleVibrate("right", 0);
+    }
 }

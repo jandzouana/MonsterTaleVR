@@ -14,26 +14,39 @@ public class door_button_open : MonoBehaviour
     public GameObject[] sounds;
 
     public bool interacted; //whether door has been opened
-
+    private bool played;
     private Material buttonOriginalColor;
     private Material[] buttonMaterials; //button's material array (from mesh renderer)
 
     public GameObject door; //door to be animated
-    private bool rotating;
+    public bool rotating;
     public float tiltAngle = 110.0F; //how far the door rotates
     public float smooth = 0.50F; //ease of door opening
 
-    //Triggers all actions needed when button has been pressed
-    public void TriggerOn(){      
-        OpenDoor();
-        ChangeButtonColor();
-        PlaySound();
-
+    private IEnumerator Settle()
+    {
+        script.on = false;
+        yield return null;
     }
+    private void Sequence()
+    {
+        StartCoroutine(Seq());
+    }
+
+    private IEnumerator Seq()
+    {
+        yield return StartCoroutine(PlaySound());
+        ChangeButtonColor();
+        StartCoroutine(OpenDoor());
+        yield return new WaitForSeconds(3);
+        //turns off button after 3 seconds
+        StartCoroutine(Settle());
+    }
+
+
     //Changes the glow on the button to buttonGlow
     public void ChangeButtonColor()
     {
-
         buttonMaterials[1] = buttonGlow;
         foreach(GameObject button in buttons)
         {
@@ -52,15 +65,17 @@ public class door_button_open : MonoBehaviour
         button2.GetComponent<Renderer>().materials = buttonMaterials;
         */
     }
-    private void OpenDoor()
+    private IEnumerator OpenDoor()
     {
         rotating = true;
-        if (rotating)
+        while (rotating)
         {
+            yield return null;
             // Vector3 to = new Vector3(0, door.transform.localEulerAngles.y, tiltAngle);
             Vector3 to = new Vector3(door.transform.localEulerAngles.x, tiltAngle, door.transform.localEulerAngles.z);
 
-            if (Vector3.Distance(door.transform.eulerAngles, to) > 0.01f)
+            //change 0.01
+            if (Vector3.Distance(door.transform.eulerAngles, to) > 0.1f)
             {
                 door.transform.eulerAngles = Vector3.Lerp(door.transform.rotation.eulerAngles, to, Time.deltaTime * smooth);
             }
@@ -72,13 +87,13 @@ public class door_button_open : MonoBehaviour
         }
     }
     //plays button sound and door open sound;
-    public void PlaySound()
+    public IEnumerator PlaySound()
     {
         foreach(GameObject sound in sounds)
         {
             sound.GetComponent<AudioSource>().Play();
         }
-        interacted = true;
+        yield return null;
     }
 
     // Use this for initialization
@@ -95,7 +110,8 @@ public class door_button_open : MonoBehaviour
     {
         if (script.on && !interacted)
         {
-            TriggerOn();
+            Sequence();
+            interacted = true;
         }
 
     }

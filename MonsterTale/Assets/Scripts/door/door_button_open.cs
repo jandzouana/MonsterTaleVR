@@ -7,7 +7,7 @@ using UnityEngine;
 public class door_button_open : MonoBehaviour
 {
     public GameObject[] buttons; //first part of button
-    public ButtonInteract script;
+    private ButtonInteract script;
     public GameObject scriptObject;
 
     public Material buttonGlow; //shader for the glow on buttons
@@ -19,15 +19,11 @@ public class door_button_open : MonoBehaviour
     private Material[] buttonMaterials; //button's material array (from mesh renderer)
 
     public GameObject door; //door to be animated
-    public bool rotating;
+    private bool rotating;
     public float tiltAngle = 110.0F; //how far the door rotates
     public float smooth = 0.50F; //ease of door opening
 
-    private IEnumerator Settle()
-    {
-        script.on = false;
-        yield return null;
-    }
+
     private void Sequence()
     {
         StartCoroutine(Seq());
@@ -35,36 +31,35 @@ public class door_button_open : MonoBehaviour
 
     private IEnumerator Seq()
     {
+        //sound and color change happens at the same time
         yield return StartCoroutine(PlaySound());
-        ChangeButtonColor();
+        ChangeButtonColor(buttonGlow);
         StartCoroutine(OpenDoor());
-        yield return new WaitForSeconds(3);
+
         //turns off button after 3 seconds
+        yield return new WaitForSeconds(3);
         StartCoroutine(Settle());
+
+        //yield return StartCoroutine(OpenDoor()); // turns off button when door is completely open
     }
 
-
-    //Changes the glow on the button to buttonGlow
-    public void ChangeButtonColor()
+    //turns button off (can be turned on again)
+    private IEnumerator Settle()
     {
-        buttonMaterials[1] = buttonGlow;
+        script.on = false;
+        yield return null;
+    }
+    //Changes the glow on the button to buttonGlow
+    private void ChangeButtonColor(Material mat)
+    {
+        buttonMaterials[1] = mat;
         foreach(GameObject button in buttons)
         {
             button.GetComponent<Renderer>().materials = buttonMaterials;
         }
 
     }
-    public void ChangeButtonColorBack()
-    {
-        /*
-        buttonMaterials[1] = buttonOriginalColor;
-        buttonMaterials2[1] = buttonOriginalColor;
 
-
-        button.GetComponent<Renderer>().materials = buttonMaterials;
-        button2.GetComponent<Renderer>().materials = buttonMaterials;
-        */
-    }
     private IEnumerator OpenDoor()
     {
         rotating = true;
@@ -87,7 +82,7 @@ public class door_button_open : MonoBehaviour
         }
     }
     //plays button sound and door open sound;
-    public IEnumerator PlaySound()
+    private IEnumerator PlaySound()
     {
         foreach(GameObject sound in sounds)
         {
@@ -108,6 +103,7 @@ public class door_button_open : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Executes sequence once
         if (script.on && !interacted)
         {
             Sequence();

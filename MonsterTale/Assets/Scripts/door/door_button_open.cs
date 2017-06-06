@@ -13,6 +13,7 @@ public class door_button_open : MonoBehaviour
     public Material buttonGlow; //shader for the glow on buttons
     public GameObject[] sounds;
 
+    public bool willReset;
     public bool interacted; //whether door has been opened
     private bool played;
     private Material buttonOriginalColor;
@@ -59,6 +60,18 @@ public class door_button_open : MonoBehaviour
         }
 
     }
+    public void ChangeButtonColor(string str)
+    {
+        if (str == "original")
+        {
+            buttonMaterials[1] = buttonOriginalColor;
+            foreach (GameObject button in buttons)
+            {
+                button.GetComponent<Renderer>().materials = buttonMaterials;
+            }
+        }
+
+    }
 
     private IEnumerator OpenDoor()
     {
@@ -95,7 +108,7 @@ public class door_button_open : MonoBehaviour
     void Start()
     {
         script = scriptObject.GetComponent<ButtonInteract>();
-        buttonOriginalColor = buttons[1].GetComponent<Renderer>().materials[1];
+        buttonOriginalColor = buttons[0].GetComponent<Renderer>().materials[1];
         buttonMaterials = buttons[1].GetComponent<Renderer>().materials;
         interacted = rotating = false;
     }

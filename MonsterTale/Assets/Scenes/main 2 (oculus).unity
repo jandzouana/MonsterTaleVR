@@ -24116,9 +24116,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2009937195}
-  - component: {fileID: 2009937196}
   - component: {fileID: 2009937197}
+  - component: {fileID: 2009937196}
   - component: {fileID: 2009937198}
+  - component: {fileID: 2009937199}
   m_Layer: 0
   m_Name: Spaceship Button
   m_TagString: Untagged
@@ -24180,10 +24181,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1984211074}
+  SoundOpen: {fileID: 1211944049}
   isInsideSpaceship: 0
   spaceship: {fileID: 1641820729}
-  spaceshipOpenSound: {fileID: 1211944049}
   button: {fileID: 2009937194}
+--- !u!114 &2009937199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2009937194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42ac39bc0428a94f88d0e32b93e4c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceship: {fileID: 1641820730}
+  speed: 0.25
+  reverseSpeed: 0.05
+  rotationSpeed: 0
+  defSpeed: 0.1
+  player: {fileID: 1984211074}
+  holdTime: 1
+  safeZone: {fileID: 0}
+  controller: {fileID: 0}
+  hitSafeZone: 0
+  target: {fileID: 0}
+  SittingScriptObject: {fileID: 2009937194}
 --- !u!1 &2036575056
 GameObject:
   m_ObjectHideFlags: 0

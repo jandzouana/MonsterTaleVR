@@ -1248,7 +1248,6 @@ MonoBehaviour:
   buttonGlow: {fileID: 2100000, guid: 4da56bb2fbbdbb441bfbcaa8f46a3e21, type: 2}
   sounds:
   - {fileID: 715598268}
-  willReset: 1
   interacted: 0
   door: {fileID: 0}
   tiltAngle: 85
@@ -1518,7 +1517,6 @@ MonoBehaviour:
   sounds:
   - {fileID: 1135331600}
   - {fileID: 1568551159}
-  willReset: 0
   interacted: 0
   door: {fileID: 1434595438}
   tiltAngle: 85
@@ -1582,6 +1580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a68f2440782fc4cacb9c68e422917a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  willReset: 1
   on: 0
   timeLower: 0.2
   timeUpper: 0.2
@@ -2020,6 +2019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a68f2440782fc4cacb9c68e422917a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  willReset: 1
   on: 0
   timeLower: 0.2
   timeUpper: 0.2
@@ -2223,7 +2223,6 @@ MonoBehaviour:
   buttonGlow: {fileID: 2100000, guid: 4da56bb2fbbdbb441bfbcaa8f46a3e21, type: 2}
   sounds:
   - {fileID: 715598268}
-  willReset: 1
   interacted: 0
   door: {fileID: 0}
   tiltAngle: 85
@@ -2592,7 +2591,6 @@ MonoBehaviour:
   buttonGlow: {fileID: 2100000, guid: 4da56bb2fbbdbb441bfbcaa8f46a3e21, type: 2}
   sounds:
   - {fileID: 715598268}
-  willReset: 1
   interacted: 0
   door: {fileID: 0}
   tiltAngle: 85
@@ -2836,7 +2834,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: HmdRotatesY
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
@@ -21497,6 +21495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a68f2440782fc4cacb9c68e422917a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  willReset: 1
   on: 0
   timeLower: 0.2
   timeUpper: 0.2
@@ -21836,7 +21835,6 @@ MonoBehaviour:
   buttonGlow: {fileID: 2100000, guid: 4da56bb2fbbdbb441bfbcaa8f46a3e21, type: 2}
   sounds:
   - {fileID: 715598268}
-  willReset: 1
   interacted: 0
   door: {fileID: 0}
   tiltAngle: 85
@@ -21988,7 +21986,6 @@ Transform:
   - {fileID: 459952364}
   - {fileID: 1532108592}
   - {fileID: 2009937195}
-  - {fileID: 2001695565}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22062,7 +22059,6 @@ MonoBehaviour:
   sounds:
   - {fileID: 1821360575}
   - {fileID: 1568551159}
-  willReset: 0
   interacted: 0
   door: {fileID: 1226992913}
   tiltAngle: 110
@@ -22322,6 +22318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a68f2440782fc4cacb9c68e422917a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  willReset: 0
   on: 0
   timeLower: 0.2
   timeUpper: 0.2
@@ -23179,6 +23176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a68f2440782fc4cacb9c68e422917a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  willReset: 1
   on: 0
   timeLower: 0.2
   timeUpper: 0.2
@@ -24066,6 +24064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a68f2440782fc4cacb9c68e422917a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  willReset: 0
   on: 0
   timeLower: 0.2
   timeUpper: 0.2
@@ -24076,34 +24075,6 @@ MonoBehaviour:
 GameObject:
   m_PrefabParentObject: {fileID: 104532, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
   m_PrefabInternal: {fileID: 818973210}
---- !u!1 &2001695564
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2001695565}
-  m_Layer: 0
-  m_Name: Spaceship
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2001695565
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2001695564}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1373532766}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2006873110 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 101028, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
@@ -24151,6 +24122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a68f2440782fc4cacb9c68e422917a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  willReset: 1
   on: 0
   timeLower: 0.2
   timeUpper: 0.2
@@ -24197,12 +24169,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spaceship: {fileID: 1641820730}
-  speed: 0.25
-  reverseSpeed: 0.05
-  rotationSpeed: 0
   defSpeed: 0.1
+  defTurnSpeed: 1
+  defReverseSpeed: 0.05
   player: {fileID: 1984211074}
-  holdTime: 1
   safeZone: {fileID: 0}
   controller: {fileID: 0}
   hitSafeZone: 0

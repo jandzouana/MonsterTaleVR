@@ -8,13 +8,13 @@ public class sitInSpaceship : MonoBehaviour {
     public GameObject spaceship;
     public GameObject button;
     private ButtonInteract buttonScript;
+    private bool teleported;
 
     public void TeleportToSpaceship(){
         float xpositionSpaceship = spaceship.transform.position.x;
         float ypositionPlayerSpaceship = spaceship.transform.position.y;
         float zpositionPlayerSpaceship = spaceship.transform.position.z;
         Vector3 to = new Vector3(0, 0, 0);
-        //player.transform.localPosition = new Vector3(xpositionSpaceship, ypositionPlayerSpaceship, zpositionPlayerSpaceship); //teleports player to spaceship location
 		isInsideSpaceship = true;
         player.transform.SetParent(spaceship.transform); //attaches player to spaceship
         player.transform.localPosition = Vector3.zero;
@@ -27,11 +27,8 @@ public class sitInSpaceship : MonoBehaviour {
         //disables player character controller to stop spaceship from rotating
         player.GetComponent<CharacterController>().enabled = false;
         player.GetComponent<OVRPlayerController>().enabled = false;
-
         //activate character controller for spaceship
         spaceship.GetComponent<CharacterController>().enabled = true;
-        //disable spaceship open sound
-        //DisableSound(spaceshipOpenSound);
     }
     private void PlaySound(GameObject sound)
     {
@@ -44,26 +41,22 @@ public class sitInSpaceship : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-		isInsideSpaceship = false;
+		isInsideSpaceship = teleported =  false;
         buttonScript = button.GetComponent<ButtonInteract>();
 	}
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (buttonScript.on)
+        if (buttonScript.on) isInsideSpaceship = true;
+        if (isInsideSpaceship && !teleported)
         {
+            teleported = true;
             TeleportToSpaceship();
             Utilities(); //other things that need to be done as player teleports to spaceship
             PlaySound(SoundOpen);
             buttonScript.on = false;
         }
-        if (OVRInput.Get(OVRInput.Button.One))
-        {
-            //Debug.Log("Pressed");
-        }
-
 
     }
 

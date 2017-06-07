@@ -23,7 +23,7 @@ public class reset_button : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!scriptButton.on && scriptDoor.interacted && scriptDoor.willReset)
+        if (!scriptButton.on && scriptDoor.interacted && scriptButton.willReset)
         {
             reset();
         }

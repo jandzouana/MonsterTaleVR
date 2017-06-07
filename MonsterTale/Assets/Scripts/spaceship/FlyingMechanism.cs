@@ -3,14 +3,14 @@ using System.Collections;
 
 public class FlyingMechanism : MonoBehaviour {
     public Transform spaceship;
-    public float speed; //changed SPEED
-    public float reverseSpeed = 0.25f;
-    public float rotationSpeed;
-    public float defSpeed = 0.50f;
-    private float defTurnSpeed = 30f;
+    private float speed;
+    private float rotationSpeed;
+    public float defSpeed;
+    public float defTurnSpeed;
+    public float defReverseSpeed;
+
 
     public GameObject player; // where script for sitInSpaceship is located
-    public float holdTime = 1.0f;
     public GameObject safeZone;
     public GameObject controller;
     public bool hitSafeZone;
@@ -50,10 +50,11 @@ public class FlyingMechanism : MonoBehaviour {
 
     private IEnumerator RotationMechanisms()
     {
+        rotationSpeed = defTurnSpeed;
         Vector2 secondaryAxis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
         euler.y += secondaryAxis.x;
         euler.x -= secondaryAxis.y;
-        spaceship.transform.rotation = Quaternion.Euler(euler);
+        spaceship.transform.rotation = Quaternion.Euler(euler*rotationSpeed);
         yield return null;
     }
     private IEnumerator MovingMechanisms()
@@ -105,8 +106,11 @@ public class FlyingMechanism : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         //Moving forward mechanism
-        StartCoroutine(MovingMechanisms());
-        StartCoroutine(RotationMechanisms());
+        if (sittingScript.isInsideSpaceship)
+        {
+            StartCoroutine(MovingMechanisms());
+            StartCoroutine(RotationMechanisms());
+        }
         if (moveForward)
         {
             speed = defSpeed;
@@ -117,7 +121,7 @@ public class FlyingMechanism : MonoBehaviour {
         //Moving backward
         else if (moveBack)
         {
-            speed = reverseSpeed;
+            speed = defReverseSpeed;
             Vector3 forward = spaceship.TransformDirection(Vector3.forward); // getting forward direction
             spaceship.GetComponent<CharacterController>().Move(-forward * speed);
         }
@@ -162,7 +166,6 @@ public class FlyingMechanism : MonoBehaviour {
                 //enable spaceshipopen gameobject
                 spaceshipOpenSound.SetActive(true);
 
-                hasBeenDelayed = false;
             }
         }
         */

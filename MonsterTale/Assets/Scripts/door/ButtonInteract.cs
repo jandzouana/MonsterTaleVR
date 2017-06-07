@@ -12,6 +12,7 @@ public class ButtonInteract : MonoBehaviour {
     private bool leftHasTouched;
     private bool rightHasTouched;
 
+    public bool willReset;
     public bool on;
     //specify how fast the button lowers and bounces back to the origial position
 	public float timeLower;

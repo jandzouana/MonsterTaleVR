@@ -13,7 +13,6 @@ public class door_button_open : MonoBehaviour
     public Material buttonGlow; //shader for the glow on buttons
     public GameObject[] sounds;
 
-    public bool willReset;
     public bool interacted; //whether door has been opened
     private bool played;
     private Material buttonOriginalColor;

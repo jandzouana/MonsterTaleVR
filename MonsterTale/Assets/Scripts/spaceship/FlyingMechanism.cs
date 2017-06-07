@@ -16,8 +16,8 @@ public class FlyingMechanism : MonoBehaviour {
     public GameObject exitSound;
 
     private Vector3 euler; //for rotating spaceship
-    private bool moveForward;
-    private bool moveBack;
+    public bool moveForward;
+    public bool moveBack;
     private bool hitSafeZone;
 
     private Vector3 to;
@@ -42,8 +42,21 @@ public class FlyingMechanism : MonoBehaviour {
     }
     private IEnumerator MovingMechanisms()
     {
+        //Move Forward
+        if (OVRInput.GetUp(OVRInput.Button.Two) && sittingScript.isInsideSpaceship && !moveForward)
+        {
+            moveForward = true;
+            moveBack = false;
+        }
+        //Move Backward
+        else if (OVRInput.GetUp(OVRInput.Button.One) && sittingScript.isInsideSpaceship && !moveBack)
+        {
+            moveBack = true;
+            moveForward = false;
+        }
+
         //Stop (while moving backward)
-        if (OVRInput.GetUp(OVRInput.Button.Two) && sittingScript.isInsideSpaceship && moveForward && !moveBack)
+        else if (OVRInput.GetUp(OVRInput.Button.Two) && sittingScript.isInsideSpaceship && moveForward && !moveBack)
         {
             moveForward = false;
             moveBack = false;
@@ -51,18 +64,8 @@ public class FlyingMechanism : MonoBehaviour {
         //Stop (while moving forward)
         else if (OVRInput.GetUp(OVRInput.Button.One) && sittingScript.isInsideSpaceship && moveBack && !moveForward)
         {
+            moveForward = false;
             moveBack = false;
-            moveBack = false;
-        }
-        //Move Forward
-        else if (OVRInput.GetUp(OVRInput.Button.Two) && sittingScript.isInsideSpaceship && !moveForward && !moveBack)
-        {
-            moveForward = true;
-        }
-        //Move Backward
-        else if (OVRInput.GetUp(OVRInput.Button.One) && sittingScript.isInsideSpaceship && !moveBack && !moveForward)
-        {
-            moveBack = true;
         }
 
 

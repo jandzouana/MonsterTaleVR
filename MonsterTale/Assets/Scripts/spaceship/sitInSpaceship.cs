@@ -2,13 +2,15 @@
 using System.Collections;
 
 public class sitInSpaceship : MonoBehaviour {
+    public bool isInsideSpaceship;
     public GameObject player;
-    public GameObject SoundOpen;
-	public bool isInsideSpaceship;
     public GameObject spaceship;
     public GameObject button;
+    public GameObject SoundOpen;
+    public Vector3 initialPlayerPosition;
+    public Vector3 initialSpaceshipPosition;
     private ButtonInteract buttonScript;
-    private bool teleported;
+    public bool teleported;
 
     public void TeleportToSpaceship(){
         float xpositionSpaceship = spaceship.transform.position.x;
@@ -20,6 +22,14 @@ public class sitInSpaceship : MonoBehaviour {
         player.transform.localPosition = Vector3.zero;
         player.transform.eulerAngles = to; //rotates the player to face forward
 
+    }
+    //initial position of object
+    Vector3 GetInitialPosition(GameObject target)
+    {
+        float xposition = target.transform.position.x;
+        float yposition = target.transform.position.y;
+        float zposition = target.transform.position.z;
+        return new Vector3(xposition, yposition, zposition);
     }
     //other things that need to be done as player teleports to spaceship
     private void Utilities()
@@ -51,6 +61,8 @@ public class sitInSpaceship : MonoBehaviour {
         if (buttonScript.on) isInsideSpaceship = true;
         if (isInsideSpaceship && !teleported)
         {
+            initialPlayerPosition = GetInitialPosition(player);
+            initialSpaceshipPosition = GetInitialPosition(spaceship);
             teleported = true;
             TeleportToSpaceship();
             Utilities(); //other things that need to be done as player teleports to spaceship

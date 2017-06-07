@@ -13,14 +13,16 @@ public class FlyingMechanism : MonoBehaviour {
     public GameObject player; // where script for sitInSpaceship is located
     public GameObject safeZone;
     public GameObject controller;
-    public bool hitSafeZone;
     public GameObject target;
     public GameObject SittingScriptObject;
+    public GameObject exitSound;
 
     private Vector3 euler; //for rotating spaceship
     private bool moveForward;
     private bool moveBack;
+    private bool hitSafeZone;
 
+    private Vector3 to;
     private float counter;
     private sitInSpaceship sittingScript; // function if is sitting
 
@@ -29,24 +31,7 @@ public class FlyingMechanism : MonoBehaviour {
         sound.GetComponent<AudioSource>().Play();
     }
 
-    private void OnTriggerEnter(Collider col)
-    {
-        if (col.CompareTag("safe"))
-        {
-            hitSafeZone = true;
-        }
-    }
-    private void OnTriggerStay(Collider col)
-    {
-        if (col.CompareTag("safe"))
-        {
-            hitSafeZone = true;
-        }
-    }
-    private void OnTriggerExit(Collider col)
-    {
-        hitSafeZone = false;
-    }
+
 
     private IEnumerator RotationMechanisms()
     {
@@ -80,6 +65,36 @@ public class FlyingMechanism : MonoBehaviour {
         {
             moveBack = false;
             moveBack = false;
+        }
+        yield return null;
+
+    }
+
+    private IEnumerator ExitSpaceship()
+    {
+        //While app button is being pressed, check if it has been held for holdTime seconds
+        if (OVRInput.GetDown(OVRInput.Button.Four) && sittingScript.isInsideSpaceship && hitSafeZone) //add hitsafezone
+        {        
+                //unparent player from spaceship
+                player.transform.parent = null;
+                //move the player back to initial position
+                player.transform.position = sittingScript.initialPlayerPosition;
+                //enable character controller
+                 player.GetComponent<OVRPlayerController>().enabled = true;
+
+                //move spaceship back
+                spaceship.transform.position = sittingScript.initialSpaceshipPosition;
+                //rotate spaceship to original position
+                to = new Vector3(0, 0, 0);
+                spaceship.transform.eulerAngles = to; //resets the rotation of spaceship
+                player.transform.eulerAngles = to; //resets the rotation of player
+
+                //no longer in spaceship
+                sittingScript.isInsideSpaceship = false;
+                //can teleport again
+                sittingScript.teleported = false;
+                //play sound
+                PlaySound(exitSound);
         }
         yield return null;
 
@@ -132,43 +147,9 @@ public class FlyingMechanism : MonoBehaviour {
             spaceship.GetComponent<CharacterController>().Move(-forward * speed);
         }
 
-        /*
         //Exiting out of spaceship
-        //While app button is being pressed, check if it has been held for holdTime seconds
-        if (GvrController.AppButton && sittingScript.isInsideSpaceship && hasBeenDelayed && hitSafeZone) //add hitsafezone
-        {
-            counter += Time.deltaTime;
-            if (counter > .25f)
-            {
-                moveBack = false;
-                moveForward = false;
-            }
-            if (counter > holdTime)
-            {      
-                //unparent player from spaceship
-                player.transform.parent = null;
-                
-                //rotate spaceship to original position
-                Vector3 to = new Vector3(0, 0, 0);
-                transform.eulerAngles = to; //resets the rotation of spaceship
-                player.transform.eulerAngles = to; //resets the rotation of player
-
-                //move the player
-                float xpositionPlayer = player.transform.position.x;
-                float ypositionPlayer = player.transform.position.y;
-                float zpositionPlayer = player.transform.position.z;
-                player.transform.position = new Vector3(xpositionPlayer-5, ypositionPlayer, zpositionPlayer-5);
-                sittingScript.isInsideSpaceship = false;
-
-                //play sound
-                PlaySound(exitSound);
-
-                //enable spaceshipopen gameobject
-                spaceshipOpenSound.SetActive(true);
-
-            }
-        }
-        */
+        StartCoroutine(ExitSpaceship());
+        hitSafeZone = spaceship.GetComponent<SpaceshipCollide>().hitSafeZone;
 
     }
 }

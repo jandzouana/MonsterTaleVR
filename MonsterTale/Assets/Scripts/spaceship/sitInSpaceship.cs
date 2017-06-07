@@ -3,6 +3,7 @@ using System.Collections;
 
 public class sitInSpaceship : MonoBehaviour {
     public bool isInsideSpaceship;
+    public bool teleported;
     public GameObject player;
     public GameObject spaceship;
     public GameObject button;
@@ -10,7 +11,6 @@ public class sitInSpaceship : MonoBehaviour {
     public Vector3 initialPlayerPosition;
     public Vector3 initialSpaceshipPosition;
     private ButtonInteract buttonScript;
-    public bool teleported;
 
     public void TeleportToSpaceship(){
         float xpositionSpaceship = spaceship.transform.position.x;

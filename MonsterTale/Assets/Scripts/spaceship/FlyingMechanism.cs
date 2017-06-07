@@ -11,8 +11,6 @@ public class FlyingMechanism : MonoBehaviour {
 
 
     public GameObject player; // where script for sitInSpaceship is located
-    public GameObject safeZone;
-    public GameObject controller;
     public GameObject target;
     public GameObject SittingScriptObject;
     public GameObject exitSound;
@@ -36,7 +34,7 @@ public class FlyingMechanism : MonoBehaviour {
     private IEnumerator RotationMechanisms()
     {
         rotationSpeed = defTurnSpeed;
-        Vector2 secondaryAxis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+        Vector2 secondaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
         euler.y += secondaryAxis.x;
         euler.x -= secondaryAxis.y;
         spaceship.transform.rotation = Quaternion.Euler(euler*rotationSpeed);
@@ -44,28 +42,30 @@ public class FlyingMechanism : MonoBehaviour {
     }
     private IEnumerator MovingMechanisms()
     {
-        //Move Forward
-        if (OVRInput.GetDown(OVRInput.Button.One) && sittingScript.isInsideSpaceship && !moveForward && !moveBack)
-        {
-            moveForward = true;
-        }
-        //Move Backward
-        else if (OVRInput.GetDown(OVRInput.Button.Two) && sittingScript.isInsideSpaceship && !moveBack && !moveForward)
-        {
-            moveBack = true;
-        }
-
-        //Stop
-        else if (OVRInput.GetUp(OVRInput.Button.Two) && sittingScript.isInsideSpaceship && moveForward && !moveBack)
+        //Stop (while moving backward)
+        if (OVRInput.GetUp(OVRInput.Button.Two) && sittingScript.isInsideSpaceship && moveForward && !moveBack)
         {
             moveForward = false;
             moveBack = false;
         }
+        //Stop (while moving forward)
         else if (OVRInput.GetUp(OVRInput.Button.One) && sittingScript.isInsideSpaceship && moveBack && !moveForward)
         {
             moveBack = false;
             moveBack = false;
         }
+        //Move Forward
+        else if (OVRInput.GetUp(OVRInput.Button.Two) && sittingScript.isInsideSpaceship && !moveForward && !moveBack)
+        {
+            moveForward = true;
+        }
+        //Move Backward
+        else if (OVRInput.GetUp(OVRInput.Button.One) && sittingScript.isInsideSpaceship && !moveBack && !moveForward)
+        {
+            moveBack = true;
+        }
+
+
         yield return null;
 
     }
@@ -80,7 +80,8 @@ public class FlyingMechanism : MonoBehaviour {
                 //move the player back to initial position
                 player.transform.position = sittingScript.initialPlayerPosition;
                 //enable character controller
-                 player.GetComponent<OVRPlayerController>().enabled = true;
+                player.GetComponent<OVRPlayerController>().enabled = true;
+                player.GetComponent<CharacterController>().enabled = true;
 
                 //move spaceship back
                 spaceship.transform.position = sittingScript.initialSpaceshipPosition;

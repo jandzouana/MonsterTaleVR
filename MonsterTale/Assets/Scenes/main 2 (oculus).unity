@@ -183,6 +183,10 @@ Transform:
   m_Father: {fileID: 1894039235}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &39016665 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 101030, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
+  m_PrefabInternal: {fileID: 818973210}
 --- !u!1 &135367642
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +418,7 @@ Prefab:
     - target: {fileID: 108000013382762636, guid: c5cf92a3f7914af478904e385bf2ef4a,
         type: 2}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 108000013382762636, guid: c5cf92a3f7914af478904e385bf2ef4a,
         type: 2}
@@ -1510,8 +1514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons:
-  - {fileID: 2006873110}
-  - {fileID: 818973211}
+  - {fileID: 39016665}
   scriptObject: {fileID: 1532108591}
   buttonGlow: {fileID: 2100000, guid: 4d28ff115d730e24f83dd437fc433d3f, type: 2}
   sounds:
@@ -1795,7 +1798,7 @@ Prefab:
     - target: {fileID: 108000013382762636, guid: c5cf92a3f7914af478904e385bf2ef4a,
         type: 2}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 108000013382762636, guid: c5cf92a3f7914af478904e385bf2ef4a,
         type: 2}
@@ -2776,7 +2779,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1.48
   m_ColorTemperature: 6570
@@ -2805,7 +2808,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.977
+      value: 3.695
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2821,7 +2824,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalRotation.z
@@ -2829,7 +2832,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_RootOrder
@@ -2897,15 +2900,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: HmdRotatesY
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11462408, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
@@ -20049,6 +20056,30 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 7.25
       objectReference: {fileID: 0}
+    - target: {fileID: 401028, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.62890613
+      objectReference: {fileID: 0}
+    - target: {fileID: 401028, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6289059
+      objectReference: {fileID: 0}
+    - target: {fileID: 401028, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6289059
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.19432215
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.042444892
+      objectReference: {fileID: 0}
+    - target: {fileID: 401248, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.19432215
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6402820, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 93c368990cce14e6fa017d5d66ef1ef5, type: 3}
@@ -20639,7 +20670,7 @@ RectTransform:
   m_GameObject: {fileID: 970588953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.74, z: 1}
   m_Children: []
   m_Father: {fileID: 1946372546}
   m_RootOrder: 0
@@ -23513,7 +23544,7 @@ Prefab:
     - target: {fileID: 108000013382762636, guid: c5cf92a3f7914af478904e385bf2ef4a,
         type: 2}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 108000013382762636, guid: c5cf92a3f7914af478904e385bf2ef4a,
         type: 2}
@@ -23734,7 +23765,7 @@ Prefab:
     - target: {fileID: 108000013382762636, guid: c5cf92a3f7914af478904e385bf2ef4a,
         type: 2}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 108000013382762636, guid: c5cf92a3f7914af478904e385bf2ef4a,
         type: 2}
@@ -23961,11 +23992,11 @@ MonoBehaviour:
   panel: {fileID: 1055581383}
   textPanel: {fileID: 678916763}
   outsidePanel: {fileID: 1946372545}
-  initialText: Capture all the points! Press b to move forward
-  text2: Press b again to stop in place.
-  text3: Use your joystick to rotate the spaceship.
-  text4: Press a to move backwards.
-  text5: To land, navigate back to the gate.
+  initialText: Capture all the points! Press b (right controller) to move forward
+  text2: Use the joystick (left controller) to rotate the spaceship.
+  text3: Press b again to stop in place.
+  text4: You can press a (right controller) to move backwards.
+  text5: To land, navigate back to the gate and press y (left controller) to exit.
   newSafeZone: {fileID: 2128602004}
   count: 0
 --- !u!1 &1907662247 stripped
@@ -24029,7 +24060,7 @@ Prefab:
     - target: {fileID: 108000013382762636, guid: c5cf92a3f7914af478904e385bf2ef4a,
         type: 2}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 108000013382762636, guid: c5cf92a3f7914af478904e385bf2ef4a,
         type: 2}
@@ -24148,7 +24179,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1946372545}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 5.1791263}
+  m_LocalPosition: {x: 0, y: 0, z: 5.47}
   m_LocalScale: {x: 0.0035000083, y: 0.0035000003, z: 0.010000017}
   m_Children:
   - {fileID: 970588954}
@@ -24158,7 +24189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 60.578033, y: 1.2327611}
+  m_AnchoredPosition: {x: 60.578033, y: 3.7}
   m_SizeDelta: {x: 1936, y: 1625.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1946372547
@@ -24246,8 +24277,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1988663103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.409, y: 2.545, z: -0.88}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -49.36, y: 2.627, z: -0.88}
+  m_LocalScale: {x: 1, y: 0.57657826, z: 1}
   m_Children: []
   m_Father: {fileID: 684327537}
   m_RootOrder: 3

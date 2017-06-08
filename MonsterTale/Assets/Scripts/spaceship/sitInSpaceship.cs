@@ -10,7 +10,10 @@ public class sitInSpaceship : MonoBehaviour {
     public GameObject SoundOpen;
     public Vector3 initialPlayerPosition;
     public Vector3 initialSpaceshipPosition;
+	public GameObject CenterAnchorCamera;
+
     private ButtonInteract buttonScript;
+	private Fade scriptFade;
 
     public void TeleportToSpaceship(){
         float xpositionSpaceship = spaceship.transform.position.x;
@@ -53,6 +56,7 @@ public class sitInSpaceship : MonoBehaviour {
     void Start () {
 		isInsideSpaceship = teleported =  false;
         buttonScript = button.GetComponent<ButtonInteract>();
+		scriptFade = CenterAnchorCamera.GetComponent<Fade>();
 	}
 
     // Update is called once per frame
@@ -61,6 +65,8 @@ public class sitInSpaceship : MonoBehaviour {
         if (buttonScript.on) isInsideSpaceship = true;
         if (isInsideSpaceship && !teleported)
         {
+			//flashes white when inside spaceship
+			StartCoroutine(scriptFade.FadeIn());
             initialPlayerPosition = GetInitialPosition(player);
             initialSpaceshipPosition = GetInitialPosition(spaceship);
             teleported = true;

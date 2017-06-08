@@ -108,7 +108,7 @@ public class door_button_open : MonoBehaviour
     {
         script = scriptObject.GetComponent<ButtonInteract>();
         buttonOriginalColor = buttons[0].GetComponent<Renderer>().materials[1];
-        buttonMaterials = buttons[1].GetComponent<Renderer>().materials;
+        buttonMaterials = buttons[0].GetComponent<Renderer>().materials;
         interacted = rotating = false;
     }
 

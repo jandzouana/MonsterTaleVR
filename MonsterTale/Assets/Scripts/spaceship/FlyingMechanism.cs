@@ -9,20 +9,21 @@ public class FlyingMechanism : MonoBehaviour {
     public float defTurnSpeed;
     public float defReverseSpeed;
 
-
     public GameObject player; // where script for sitInSpaceship is located
     public GameObject target;
     public GameObject SittingScriptObject;
     public GameObject exitSound;
+	public GameObject CenterAnchorCamera;
 
     private Vector3 euler; //for rotating spaceship
-    public bool moveForward;
-    public bool moveBack;
+    private bool moveForward;
+    private bool moveBack;
     private bool hitSafeZone;
 
     private Vector3 to;
     private float counter;
     private sitInSpaceship sittingScript; // function if is sitting
+	private Fade scriptFade;
 
     public void PlaySound(GameObject sound)
     {
@@ -99,6 +100,8 @@ public class FlyingMechanism : MonoBehaviour {
                 sittingScript.isInsideSpaceship = false;
                 //can teleport again
                 sittingScript.teleported = false;
+				//flashes white
+				StartCoroutine(scriptFade.FadeIn());
                 //play sound
                 PlaySound(exitSound);
         }
@@ -119,8 +122,8 @@ public class FlyingMechanism : MonoBehaviour {
         sittingScript = SittingScriptObject.GetComponent<sitInSpaceship>();
         rotationSpeed = defTurnSpeed; 
         moveForward = moveBack = false;
-        //GetComponent<CharacterController>().enabled = false;//disables character controller on start (roatational problems) 
         euler = spaceship.transform.rotation.eulerAngles;
+		scriptFade = CenterAnchorCamera.GetComponent<Fade>();
     }
 
 

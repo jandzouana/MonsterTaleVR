@@ -2805,7 +2805,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.95
+      value: 3.977
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2813,7 +2813,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.76
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalRotation.x
@@ -20912,7 +20912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1055581384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23960,6 +23960,7 @@ MonoBehaviour:
   landing: {fileID: 889945208}
   panel: {fileID: 1055581383}
   textPanel: {fileID: 678916763}
+  outsidePanel: {fileID: 1946372545}
   initialText: Capture all the points! Press b to move forward
   text2: Press b again to stop in place.
   text3: Use your joystick to rotate the spaceship.
@@ -24388,7 +24389,7 @@ MonoBehaviour:
   player: {fileID: 1984211074}
   target: {fileID: 0}
   SittingScriptObject: {fileID: 2009937194}
-  exitSound: {fileID: 0}
+  exitSound: {fileID: 375424130}
   moveForward: 0
   moveBack: 0
 --- !u!1 &2036575056

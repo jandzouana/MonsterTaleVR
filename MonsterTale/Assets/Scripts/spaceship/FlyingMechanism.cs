@@ -77,7 +77,9 @@ public class FlyingMechanism : MonoBehaviour {
     {
         //While app button is being pressed, check if it has been held for holdTime seconds
         if (OVRInput.GetDown(OVRInput.Button.Four) && sittingScript.isInsideSpaceship && hitSafeZone) //add hitsafezone
-        {        
+        {
+                 //stops movement
+                moveBack = moveForward = false;
                 //unparent player from spaceship
                 player.transform.parent = null;
                 //move the player back to initial position
@@ -153,7 +155,7 @@ public class FlyingMechanism : MonoBehaviour {
 
         //Exiting out of spaceship
         StartCoroutine(ExitSpaceship());
-        hitSafeZone = spaceship.GetComponent<SpaceshipCollide>().hitSafeZone;
+        hitSafeZone = spaceship.GetComponent<SpaceshipCollide>().hit;
 
     }
 }

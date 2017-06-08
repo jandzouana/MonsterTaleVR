@@ -2167,6 +2167,23 @@ RectTransform:
   m_AnchoredPosition: {x: -1.6331251, y: 0.69484425}
   m_SizeDelta: {x: 907.8, y: 704.16}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &635191285 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
+  m_PrefabInternal: {fileID: 776111113}
+--- !u!114 &635191290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 635191285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1633428483f4a843a744eb56617f175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 2
+  fadeColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &652033759
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,7 +2825,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.695
+      value: 45.8
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2913,6 +2930,14 @@ Prefab:
     - target: {fileID: 11462408, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
@@ -24333,6 +24358,7 @@ GameObject:
   - component: {fileID: 2009937196}
   - component: {fileID: 2009937198}
   - component: {fileID: 2009937199}
+  - component: {fileID: 2009937200}
   m_Layer: 0
   m_Name: Spaceship Button
   m_TagString: Untagged
@@ -24402,6 +24428,7 @@ MonoBehaviour:
   SoundOpen: {fileID: 1211944049}
   initialPlayerPosition: {x: 0, y: 0, z: 0}
   initialSpaceshipPosition: {x: 0, y: 0, z: 0}
+  CenterAnchorCamera: {fileID: 635191285}
 --- !u!114 &2009937199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24421,8 +24448,20 @@ MonoBehaviour:
   target: {fileID: 0}
   SittingScriptObject: {fileID: 2009937194}
   exitSound: {fileID: 375424130}
-  moveForward: 0
-  moveBack: 0
+  CenterAnchorCamera: {fileID: 635191285}
+--- !u!114 &2009937200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2009937194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1633428483f4a843a744eb56617f175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 2
+  fadeColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2036575056
 GameObject:
   m_ObjectHideFlags: 0

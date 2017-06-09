@@ -99,6 +99,7 @@ public class instant_points : MonoBehaviour {
         if (sittingScript.isInsideSpaceship && !interacted && !finishedTutorial)
         {
             panel.SetActive(true);
+			outsidePanel.SetActive(false); //hides panel on outside of spaceship by gate
             //initial starting point
             pos = new Vector3(67.4f, 3, 29.3f);
             InstantiatePoint(pos);
@@ -111,7 +112,6 @@ public class instant_points : MonoBehaviour {
             panel.SetActive(false); //disable text panel after all the points have been captured
             landing.SetActive(false); //disables beginner landing marker
             newSafeZone.SetActive(true); //enables bigger landing space
-            outsidePanel.SetActive(false); //hides panel on outside of spaceship by gate
             finishedTutorial = true;
 
         }

@@ -14,6 +14,7 @@ public class FlyingMechanism : MonoBehaviour {
     public GameObject SittingScriptObject;
     public GameObject exitSound;
 	public GameObject CenterAnchorCamera;
+	public GameObject spaceshipReflectionProbe;
 
     private Vector3 euler; //for rotating spaceship
     private bool moveForward;
@@ -104,6 +105,9 @@ public class FlyingMechanism : MonoBehaviour {
 				StartCoroutine(scriptFade.FadeIn());
                 //play sound
                 PlaySound(exitSound);
+
+				//enables reflection probe
+				spaceshipReflectionProbe.SetActive(true); //hides panel on outside of spaceship by gate
         }
         yield return null;
 

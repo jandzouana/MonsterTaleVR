@@ -11,6 +11,7 @@ public class sitInSpaceship : MonoBehaviour {
     public Vector3 initialPlayerPosition;
     public Vector3 initialSpaceshipPosition;
 	public GameObject CenterAnchorCamera;
+	public GameObject spaceshipReflectionProbe;
 
     private ButtonInteract buttonScript;
 	private Fade scriptFade;
@@ -42,6 +43,9 @@ public class sitInSpaceship : MonoBehaviour {
         player.GetComponent<OVRPlayerController>().enabled = false;
         //activate character controller for spaceship
         spaceship.GetComponent<CharacterController>().enabled = true;
+		//disables reflection probe;
+		spaceshipReflectionProbe.SetActive(false); //hides panel on outside of spaceship by gate
+
     }
     private void PlaySound(GameObject sound)
     {

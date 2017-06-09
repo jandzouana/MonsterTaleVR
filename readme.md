@@ -1,7 +1,7 @@
 # Monster Tale VR
 ![mtscreenunity](https://i0.wp.com/thejandz.files.wordpress.com/2017/03/1.png?w=2000&h=&crop&ssl=1 "Screenshot of project")
 ## Description
-A quick interactive Virtual Reality experience I have designed in Unity. Initially this project was designed for Cardboard, and then Google Daydream, but it now runs with Oculus Rift. It is based on an [animation](https://www.youtube.com/watch?v=4El3XyjnP_M)
+A quick interactive Virtual Reality experience I have designed in Unity. Initially this project was designed for Cardboard, but it has been modified to run on Google Daydream. It is based on an [animation](https://www.youtube.com/watch?v=4El3XyjnP_M)
 I have created in 2015.
 ### Link to Video (WIP)
 https://www.youtube.com/watch?v=I1wzjLcL_2A
@@ -14,7 +14,7 @@ https://www.youtube.com/watch?v=I1wzjLcL_2A
 * [Unity](https://unity3d.com/) - Game engine used
 * [Maya](http://www.autodesk.com/products/maya/overview) - 3D modelling program used
 
-## Instructions For Viewing Project (within Unity)
+## Instructions for Viewing Project (within Unity)
 To run this project, you will need to have Unity 5.6x. Open Unity, and open Monster Tale (inside MonsterTaleVR) as a project. Open the main (oculus) scene. Click play and follow the instructions to interact with the environment.
 
 ## Creators
